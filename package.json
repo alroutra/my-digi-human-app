@@ -1,0 +1,75 @@
+{
+  "private": true,
+  "workspaces": [
+    "packages/*",
+    "example-app"
+  ],
+  "scripts": {
+    "start-core": "yarn workspace uneeq-react-core start",
+    "build-core": "yarn workspace uneeq-react-core build",
+
+    "start-ui": "yarn workspace uneeq-react-ui start",
+    "build-ui": "yarn workspace uneeq-react-ui build",
+
+    "start-download-pdf": "yarn workspace uneeq-download-pdf start",
+    "build-download-pdf": "yarn workspace uneeq-download-pdf build",
+
+    "start-modules": "concurrently \"yarn:start-download-pdf\" \"yarn:start-core\" \"yarn:start-ui\"",
+    "build-modules": "yarn build-download-pdf && yarn build-core && yarn build-ui",
+   
+    "start-example-only": "yarn workspace example-app start",
+    "start-example": "concurrently \"yarn:start-core\" \"yarn:start-ui\" \"yarn:start-example-only\"",
+    "build-example-only": "yarn workspace example-app build",
+    "build-example": "yarn build-modules && yarn build-example-only",
+
+    "start": "yarn start-example",
+    "build": "yarn build-example && rm -rf build &&  mv example-app/build .",
+    "test": "yarn workspace example-app test",
+    "coverage": "yarn workspace example-app coverage"
+  },
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "concurrently": "^5.1.0",
+    "@testing-library/jest-dom": "^5.11.2",
+    "@testing-library/react-hooks": "^3.2.1",
+    "@types/lodash.omit": "^4.5.6",
+    "@typescript-eslint/eslint-plugin": "2.x",
+    "@typescript-eslint/parser": "2.x",
+    "eslint": "6.x",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-config-react-app": "^5.2.0",
+    "eslint-plugin-flowtype": "3.x",
+    "eslint-plugin-import": "2.x",
+    "eslint-plugin-jsx-a11y": "6.x",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-react": "7.x",
+    "eslint-plugin-react-hooks": "1.x",
+    "husky": "^4.2.5",
+    "jest-environment-jsdom-sixteen": "^1.0.3",
+    "lint-staged": "^10.2.6",
+    "prettier": "^1.19.1",
+    "prettier-eslint": "^9.0.1",
+    "react-test-renderer": "^16.13.1",
+    "request-promise": "^4.2.5"
+  },
+  "jest": {
+    "watchPathIgnorePatterns": [
+      "__initialStates__"
+    ],
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx,ts,tsx}",
+      "!<rootDir>/node_modules/",
+      "!src/**/index.ts",
+      "!src/**/*.d.ts",
+      "!src/**/styles.ts",
+      "!src/uneeq-ui/Components/TestBar/**",
+      "!src/serviceWorker.ts",
+      "!src/theme.ts",
+      "!src/app/config.ts",
+      "!src/setupTests.ts",
+      "!src/test-utils.tsx",
+      "!src/react-app-env.d.ts",
+      "!src/index.tsx"
+    ]
+  }
+}
