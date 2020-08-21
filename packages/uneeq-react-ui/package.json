@@ -1,12 +1,12 @@
 {
   "name": "uneeq-react-ui",
-  "version": "0.0.0",
-  "description": "FIXME",
+  "version": "0.1.0",
+  "description": "Uneeq React UI library",
   "author": "P22 Ltd",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/FIXME/mono.git",
-    "directory": "packages/react"
+    "url": "git+https://github.com/p22-studio/uneeq-react.git",
+    "directory": "packages/uneeq-react-ui"
   },
   "scripts": {
     "start": "tsdx watch --tsconfig tsconfig.build.json --verbose --noClean",
