@@ -15,10 +15,13 @@ if (process.env.REACT_APP_CONFIG === 'EXMAPLE') {
 const config = {
   debug: true,
 
+  url: process.env.REACT_APP_UNEEQ_URL,
+  conversationId: process.env.REACT_APP_UNEEQ_CONVERSATION_ID,
+  tokenUrl: process.env.REACT_APP_UNEEQ_TOKEN_URL,
+
+
+  // welcome can be suppressed during dev with REACT_APP_NO_WELCOME=1
   playWelcome: !process.env.REACT_APP_NO_WELCOME,
-  url: 'https://api.us.uneeq.io',
-  conversationId: '', // FIXME
-  tokenUrl: '/api/token',  // FIXME
 
   sendLocalVideo: false,
   customData: {},
