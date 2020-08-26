@@ -2,7 +2,6 @@ const styles = {
   modal: {
     // TODO can we use a generic style for this?
     width: [296, 296, 526, 526, 850, 850],
-    height: 513,
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
