@@ -60,8 +60,8 @@ const Feedback: React.FC<FeedbackProps> = ({ restart }) => {
             values={{ avatarName: config.avatarName }}
             t={t}
           >
-            How likely are you to recommend {config?.avatarName} to a friend or
-            colleague?
+            How likely are you to recommend our digital representative to a
+            friend or colleague?
           </Trans>
         </Text>
         <Box sx={styles.recommendationContainer}>
@@ -74,7 +74,7 @@ const Feedback: React.FC<FeedbackProps> = ({ restart }) => {
             </Text>
           </Flex>
           <Flex sx={styles.numbersContainer}>
-            {[0, 1, 2, 3, 4, 5, 5, 6, 7, 8, 9, 10].map(num => (
+            {[0, 1, 2, 3, 4, 5, 11, 6, 7, 8, 9, 10].map(num => (
               <Flex
                 key={num}
                 onClick={() => setRecommendationScore(num)}
@@ -111,7 +111,7 @@ const Feedback: React.FC<FeedbackProps> = ({ restart }) => {
             </Text>
           </Flex>
           <Flex sx={styles.numbersContainer}>
-            {[0, 1, 2, 3, 4, 5, 5, 6, 7, 8, 9, 10].map(num => (
+            {[0, 1, 2, 3, 4, 5, 11, 6, 7, 8, 9, 10].map(num => (
               <Flex
                 key={num}
                 onClick={() => setFeedbackScore(num)}
@@ -138,7 +138,7 @@ const Feedback: React.FC<FeedbackProps> = ({ restart }) => {
             values={{ avatarName: config.avatarName }}
             t={t}
           >
-            What's your impression of {config?.avatarName}?
+            What's your impression of our digital representative?
           </Trans>
         </Text>
         <Textarea

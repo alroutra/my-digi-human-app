@@ -10,7 +10,8 @@ i18n
     interpolation: {
       escapeValue: false // react already safes from xss
     },
-    debug: true
+    debug: process.env.NODE_ENV === 'development',
+    resources: {}
   })
 i18n.addResourceBundle('en', 'translation', en)
 

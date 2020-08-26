@@ -13,6 +13,7 @@
     "build": "tsdx build --tsconfig tsconfig.build.json",
     "test": "tsdx test",
     "lint": "tsdx lint",
+    "coverage": "exit",
     "prepublish": "npm run build"
   },
   "main": "dist/index.js",

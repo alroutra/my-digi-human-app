@@ -88,7 +88,7 @@ export default {
     overflowY: 'auto',
     flexDirection: 'column',
     mt: 'auto',
-    '& > :first-child': {
+    '& > :first-of-type': {
       mt: 'auto !important'
     },
     '& .avatar-message + .avatar-message, & .user-message + .user-message': {

@@ -2,6 +2,8 @@ import React from 'react'
 import { render } from '@testing-library/react'
 import { UneeqContext } from 'uneeq-react-core'
 import { ThemeProvider } from 'emotion-theming'
+import { I18nextProvider } from 'react-i18next'
+import i18n from './i18n'
 
 export const contextMock = {
   dispatch: jest.fn(),
@@ -30,15 +32,17 @@ const providers = (state: any = contextMock.state, context: any) => ({
 }: any) => {
   return (
     <ThemeProvider theme={themeMock}>
-      <UneeqContext.Provider
-        value={{
-          ...contextMock,
-          state,
-          ...context
-        }}
-      >
-        {children}
-      </UneeqContext.Provider>
+      <I18nextProvider i18n={i18n}>
+        <UneeqContext.Provider
+          value={{
+            ...contextMock,
+            state,
+            ...context
+          }}
+        >
+          {children}
+        </UneeqContext.Provider>
+      </I18nextProvider>
     </ThemeProvider>
   )
 }

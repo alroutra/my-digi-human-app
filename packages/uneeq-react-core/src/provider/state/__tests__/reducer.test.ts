@@ -155,7 +155,8 @@ describe('uneeqCommandReducer', () => {
     })
     expect(resultState).toEqual({
       ...initialState,
-      inputMode: 'text'
+      inputMode: 'text',
+      typeModeFromBackend: true
     })
   })
 

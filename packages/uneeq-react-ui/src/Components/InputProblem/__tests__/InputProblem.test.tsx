@@ -2,6 +2,7 @@ import React from 'react'
 import { render } from '../../../test-utils'
 import '@testing-library/jest-dom/extend-expect'
 import InputProblem from '../InputProblem'
+import translation from '../../../translations/en.json'
 
 describe('InputProblem', () => {
   it('should render noInput error', () => {
@@ -14,7 +15,7 @@ describe('InputProblem', () => {
     const { container } = render(<InputProblem error="spacebarTapped" />)
 
     expect(container).toHaveTextContent(
-      'Press & hold down the spacebar the entire time while you talk to me'
+      translation.InputProblem.spacebarSmallScreen
     )
   })
 })

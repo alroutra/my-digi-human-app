@@ -2,14 +2,29 @@ import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
 import PermissionsGateway from '../PermissionsGateway'
 import { useUneeqState } from 'uneeq-react-core'
-import {
-  renderIgnoringUnstableFlushDiscreteUpdates,
-  themeMock
-} from '../../../test-utils'
-import { render } from '@testing-library/react'
-import { useTheme } from 'emotion-theming'
+import { render } from '../../../test-utils'
+import translation from '../../../translations/en.json'
 jest.mock('uneeq-react-core')
-jest.mock('emotion-theming')
+
+const loadingTips = [
+  {
+    title: 'Loading Tip 1',
+    showOnDesktop: true,
+    showOnMobile: true
+  },
+  {
+    title: 'Loading Tip 2',
+    showOnDesktop: true,
+    showOnMobile: true
+  },
+  {
+    title: 'Loading Tip 3',
+    showOnDesktop: true,
+    showOnMobile: true
+  }
+]
+
+const video = { permissionsMP4: {}, permissionsWebm: {} }
 
 describe('PermissionsGateway', () => {
   it('should render PermissionsPrompt when permissions not given', () => {
@@ -18,10 +33,15 @@ describe('PermissionsGateway', () => {
       unavailable: false,
       permissionAllowed: null
     })
-    ;(useTheme as jest.Mock).mockReturnValue(themeMock)
     const test = 'test'
     const { container } = render(
-      <PermissionsGateway restart={() => {}}>{test}</PermissionsGateway>
+      <PermissionsGateway
+        video={video}
+        loadingTips={loadingTips}
+        restart={() => {}}
+      >
+        {test}
+      </PermissionsGateway>
     )
 
     expect(container).toHaveTextContent('Loading')
@@ -35,7 +55,13 @@ describe('PermissionsGateway', () => {
     })
     const test = 'test'
     const { container } = render(
-      <PermissionsGateway restart={() => {}}>{test}</PermissionsGateway>
+      <PermissionsGateway
+        video={video}
+        loadingTips={loadingTips}
+        restart={() => {}}
+      >
+        {test}
+      </PermissionsGateway>
     )
 
     expect(container).toHaveTextContent(
@@ -51,10 +77,16 @@ describe('PermissionsGateway', () => {
     })
     const test = 'test'
     const { container } = render(
-      <PermissionsGateway restart={() => {}}>{test}</PermissionsGateway>
+      <PermissionsGateway
+        video={video}
+        loadingTips={loadingTips}
+        restart={() => {}}
+      >
+        {test}
+      </PermissionsGateway>
     )
 
-    expect(container).toHaveTextContent('Josie is busy')
+    expect(container).toHaveTextContent('another call')
   })
 
   it('should render children when ready', () => {
@@ -65,7 +97,13 @@ describe('PermissionsGateway', () => {
     })
     const test = 'test'
     const { container } = render(
-      <PermissionsGateway restart={() => {}}>{test}</PermissionsGateway>
+      <PermissionsGateway
+        video={video}
+        loadingTips={loadingTips}
+        restart={() => {}}
+      >
+        {test}
+      </PermissionsGateway>
     )
 
     expect(container).toHaveTextContent(test)
@@ -78,8 +116,14 @@ describe('PermissionsGateway', () => {
       permissionAllowed: true
     })
     const test = 'test'
-    const { getByTestId } = renderIgnoringUnstableFlushDiscreteUpdates(
-      <PermissionsGateway restart={() => {}}>{test}</PermissionsGateway>
+    const { getByTestId } = render(
+      <PermissionsGateway
+        video={video}
+        loadingTips={loadingTips}
+        restart={() => {}}
+      >
+        {test}
+      </PermissionsGateway>
     )
 
     expect(getByTestId('videoContainer')).toBeInTheDocument()

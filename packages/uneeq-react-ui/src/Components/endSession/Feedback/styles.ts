@@ -35,7 +35,7 @@ const styles = {
     color: 'secondary',
     display: 'flex',
     flexWrap: 'wrap',
-    '& div:nth-child(7)': {
+    '& div:nth-of-type(7)': {
       display: ['flex', 'flex', 'none', 'none', 'none', 'none'],
       flexBasis: '100%',
       width: 0,

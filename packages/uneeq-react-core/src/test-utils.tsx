@@ -1,6 +1,6 @@
 import React from 'react'
 import { render } from '@testing-library/react'
-import { UneeqContext } from 'uneeq-react-core'
+import UneeqContext from './provider/UneeqContext'
 import { ThemeProvider } from 'emotion-theming'
 
 export const contextMock = {

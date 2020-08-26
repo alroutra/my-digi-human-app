@@ -24,7 +24,7 @@ jest.mock('uneeq-react-core')
 })
 describe('Settings', () => {
   it('should render correctly', () => {
-    const { container } = render(<Settings />)
+    const { container } = render(<Settings audio={{}} />)
 
     expect(container).toHaveTextContent('Settings')
   })

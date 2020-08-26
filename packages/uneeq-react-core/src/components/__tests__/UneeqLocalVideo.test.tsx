@@ -1,6 +1,7 @@
 import React from 'react'
-import { render, waitFor } from '@testing-library/react'
+import { waitFor } from '@testing-library/react'
 import UneeqLocalVideo from '../UneeqLocalVideo'
+import { render } from './../../test-utils'
 import UneeqProvider from '../../provider/UneeqProvider'
 import { act } from 'react-dom/test-utils'
 
