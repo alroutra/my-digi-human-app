@@ -19,7 +19,12 @@ interface Config {
   recaptchaSiteKey?: string
   googleAnalyticsId?: string
   googleAnalyticsEventCategory?: string
-  errorLevels: {}
+  errorLevels: {
+    ignore: string | number[]
+    warning: string | number[]
+    error: string | number[]
+    fatal: string | number[]
+  }
 }
 
 // state.permissionAllowed
@@ -57,7 +62,6 @@ type UneeqInformation =
         href?: string
       }>
     }>
-
 
 interface UneeqState {
   // transcript: TranscriptItem[]

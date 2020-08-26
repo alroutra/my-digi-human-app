@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-// @ts-ignore // TODO: FIX
+// @ts-ignore
 import { Progress } from 'react-sweet-progress'
 import 'react-sweet-progress/lib/style.css'
 import { Button, Flex, Heading, Text, Box } from 'rebass'

@@ -2,19 +2,10 @@ import React from 'react'
 import { Box, Text } from 'rebass'
 import InformationContent from '../OnScreenInfo/InformationContent'
 import styles from './styles'
-
-interface TranscriptItem {
-  // FIXME
-  message: unknown
-  // TODO change any
-  information: any
-  suggestedResponses: any
-  user: boolean
-  time: Date
-}
+import { TranscriptItem } from './Transcript'
 
 interface TranscriptMessageProps {
-  line: any // TODO: try TranscriptItem
+  line: TranscriptItem
 }
 const TranscriptMessage: React.FC<TranscriptMessageProps> = ({ line }) => {
   const messageStyle = line.user

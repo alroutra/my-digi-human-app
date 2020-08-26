@@ -290,8 +290,9 @@ const UneeqProvider: React.FC<UneeqProviderProps> = ({
 
   const allDialogsClosed = () => {
     return Object.keys(closeDialogs).every(
-      // @ts-ignore // TODO: FIXME
-      key => state[key] === closeDialogs[key]
+      key =>
+        state[key as keyof typeof closeDialogs] ===
+        closeDialogs[key as keyof typeof closeDialogs]
     )
   }
 

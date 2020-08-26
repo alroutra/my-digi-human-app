@@ -13,15 +13,13 @@ import TranscriptHeader from './TranscriptHeader'
 import TranscriptMessage from './TranscriptMessage'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
+import { InformationItem } from '../OnScreenInfo/Information'
 
 const MotionBox: any = motion.custom(Box)
 
-interface TranscriptItem {
-  // FIXME
-  message: unknown
-  // TODO change any
-  information: any
-  suggestedResponses: any
+export interface TranscriptItem {
+  information?: InformationItem[]
+  message: string
   user: boolean
   time: Date
 }

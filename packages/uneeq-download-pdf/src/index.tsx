@@ -164,10 +164,7 @@ export const PdfTemplate = ({ children, logo1, logo2 }) => (
 
 export const PdfSavedItems = ({ items, logo1, logo2 }) => (
   <PdfTemplate logo1={logo1} logo2={logo2}>
-    {(items as InformationItemWithoutList[][]).map((
-      item: any, // TODO: remove any
-      index: number
-    ) => (
+    {(items as InformationItemWithoutList[][]).map((item, index: number) => (
       <View style={styles.containerSavedItems} key={index}>
         {(item as InformationItemWithoutList[]).map((childItem, indexChild) => (
           <View key={indexChild}>{renderItemForPDF(childItem)}</View>
@@ -179,9 +176,7 @@ export const PdfSavedItems = ({ items, logo1, logo2 }) => (
 
 export const PdfTranscript = ({ avatarName, items, logo1, logo2 }) => (
   <PdfTemplate logo1={logo1} logo2={logo2}>
-    {(items as TranscriptItem[]).map((
-      message: any // TODO: should we add a tag to TranscriptItems? always store the same in time? (Date vs int)
-    ) => (
+    {(items as TranscriptItem[]).map(message => (
       <View style={styles.message} key={message.time}>
         {message.link ? (
           <Link src={message.link.href} style={styles.link}>

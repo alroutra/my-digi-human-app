@@ -107,12 +107,7 @@ const InformationExpanded = () => {
           )}
           {!expandedSavedItem &&
             (saved ? (
-              <Button
-                sx={styles.saveButton}
-                variant="unstyled"
-                onClick={() => {}}
-              >
-                {/*// TODO onClick*/}
+              <Button sx={styles.saveButton} variant="unstyled">
                 <HeartFullIcon />
                 {t('OnScreenInfo.InformationExpanded.saved')}
               </Button>

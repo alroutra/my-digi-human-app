@@ -102,11 +102,10 @@ const Loading: React.FC<LoadingProps> = ({ loadingTips }) => {
 
 interface PermissionsGatewayProps {
   restart: () => void
-  children: React.ReactNode
+  children: any
   loadingTips: Array<LoadingTip>
   video: PermissionsVideo
 }
-// @ts-ignore // TODO: FIX
 const PermissionsGateway: React.FC<PermissionsGatewayProps> = ({
   restart,
   children,
