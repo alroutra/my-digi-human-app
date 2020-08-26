@@ -3,7 +3,7 @@ import downloadPdf from './downloadPdf'
 let environment = {}
 // You can override default settings for different environments
 // by setting REACT_APP_CONFIG environment variable
-if (process.env.REACT_APP_CONFIG === 'EXMAPLE') {
+if (process.env.REACT_APP_CONFIG === 'EXAMPLE') {
   console.info('config: example')
   environment = {
     conversationId: 'OTHER'
@@ -15,10 +15,9 @@ if (process.env.REACT_APP_CONFIG === 'EXMAPLE') {
 const config = {
   debug: true,
 
-  url: process.env.REACT_APP_UNEEQ_URL,
-  conversationId: process.env.REACT_APP_UNEEQ_CONVERSATION_ID,
-  tokenUrl: process.env.REACT_APP_UNEEQ_TOKEN_URL,
-
+  url: process.env.REACT_APP_UNEEQ_URL!,
+  conversationId: process.env.REACT_APP_UNEEQ_CONVERSATION_ID!,
+  tokenUrl: process.env.REACT_APP_UNEEQ_TOKEN_URL!,
 
   // welcome can be suppressed during dev with REACT_APP_NO_WELCOME=1
   playWelcome: !process.env.REACT_APP_NO_WELCOME,
