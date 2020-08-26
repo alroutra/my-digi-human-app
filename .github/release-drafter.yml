@@ -1,6 +1,25 @@
-name-template: 'v$RESOLVED_VERSION'
-tag-template: 'v$RESOLVED_VERSION'
+name-template: 'uneeq-react-$RESOLVED_VERSION'
+tag-template: 'uneeq-react-$RESOLVED_VERSION'
 change-template: "* $TITLE (#$NUMBER)"
+categories:
+  - title: '🚀 Features'
+    labels:
+      - 'feat'
+      - 'feature'
+  - title: '🐛 Bug Fixes'
+    labels:
+      - 'fix'
+      - 'bugfix'
+      - 'bug'
+  - title: '📕 Documentation'
+    labels:
+      - 'docs'
+  - title: '🧰 Maintenance'
+    labels:
+      - 'chore'
+      - 'tidy'
+      - 'refactor'
+      - 'test'
 template: |
   ## What’s Changed
 

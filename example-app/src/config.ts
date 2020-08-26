@@ -1,4 +1,4 @@
-import downloadPdf from './downloadPdf'
+import downloadPdf from './app/downloadPdf'
 
 let environment = {}
 // You can override default settings for different environments

@@ -10,7 +10,7 @@ import landingPageVideoMP4 from '../assets/video/LandingPageVideo.mp4'
 import landingPageVideo from '../assets/video/LandingPageVideo.webm'
 import landingPageVideoPortraitMP4 from '../assets/video/LandingPageVideoPortrait.mp4'
 import landingPageVideoPortrait from '../assets/video/LandingPageVideoPortrait.webm'
-import config from '../config'
+import config from '../../config'
 import styles from './styles'
 
 const Paragraphs = () => (

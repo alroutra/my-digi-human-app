@@ -6,7 +6,7 @@ import { Box, Button } from 'rebass'
 import { ThemeProvider } from 'emotion-theming'
 
 import theme from '../theme'
-import config from './config'
+import config from '../config'
 import Home from './Home'
 import assets from './assets'
 

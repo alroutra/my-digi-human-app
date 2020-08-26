@@ -1,4 +1,4 @@
-name: CI
+name: Tests
 on: push
 jobs:
   build:
@@ -8,6 +8,6 @@ jobs:
     - name: Install modules
       run: yarn
     - name: Build packages
-      run: yarn build-modules
+      run: yarn build-packages
     - name: Run tests
       run: yarn test
