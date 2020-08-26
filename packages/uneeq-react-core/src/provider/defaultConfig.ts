@@ -31,9 +31,9 @@ export const defaultConfig = {
   // prettier-ignore
   errorLevels: {
     ignore: [11001, 11002],
-    warning: ['ServiceUnavailable', 'AvatarUnavailable', 'ConnectionLost', 'Warning', 4203],
+    warning: ['ServiceUnavailable', 'AvatarUnavailable', 'ConnectionLost', 'Warning', 4203, 6013],
     error: ['MicActivityError', 'DeviceNotFoundError', 'DeviceError', 'TokenError',
-      4200, 4201, 4202, 4204, 4205, 4206, 6013, 7006, 7007,
+      4200, 4201, 4202, 4204, 4205, 4206, 7006, 7007,
       10001, 10002, 10003, 10004, 11003, 11004, 11005, 12001
     ],
     fatal: ['ErrorEndingSession',
