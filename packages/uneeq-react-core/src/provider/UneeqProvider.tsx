@@ -157,7 +157,6 @@ const UneeqProvider: React.FC<UneeqProviderProps> = ({
       if (token) {
         uneeq.current.initWithToken(token)
       } else {
-        console.log('ftoken', token)
         fetch(finalConfig.tokenUrl, {
           headers: finalConfig.orchestrationToken
             ? {
