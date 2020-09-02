@@ -5,11 +5,6 @@ import { trackHandler, useSupportedBrowser } from 'uneeq-react-core'
 import { PasscodeOverlay, UnsupportedBrowser } from 'uneeq-react-ui'
 import landingPageVideoFrame from '../assets/img/landingPageVideo.jpg'
 import landingPageVideoPortraitFrame from '../assets/img/landingPageVideoPortrait.jpg'
-import introVideoMP4 from '../assets/video/intro.mp4'
-import landingPageVideoMP4 from '../assets/video/LandingPageVideo.mp4'
-import landingPageVideo from '../assets/video/LandingPageVideo.webm'
-import landingPageVideoPortraitMP4 from '../assets/video/LandingPageVideoPortrait.mp4'
-import landingPageVideoPortrait from '../assets/video/LandingPageVideoPortrait.webm'
 import config from '../../config'
 import styles from './styles'
 
@@ -46,15 +41,25 @@ const SophieVideo = () => {
       muted
       loop
       poster={
-        smallScreen ? landingPageVideoPortraitFrame : landingPageVideoFrame
+        smallScreen
+          ? 'https://d1qt3q0di8y5ko.cloudfront.net/portrait_idle.jpg'
+          : 'https://d1qt3q0di8y5ko.cloudfront.net/landing_page_idle.jpg'
       }
     >
       <source
-        src={smallScreen ? landingPageVideoPortrait : landingPageVideo}
+        src={
+          smallScreen
+            ? 'https://d1qt3q0di8y5ko.cloudfront.net/portrait_idle.webm'
+            : 'https://d1qt3q0di8y5ko.cloudfront.net/landing_page_idle.webm'
+        }
         type="video/webm"
       />
       <source
-        src={smallScreen ? landingPageVideoPortraitMP4 : landingPageVideoMP4}
+        src={
+          smallScreen
+            ? 'https://d1qt3q0di8y5ko.cloudfront.net/portrait_idle.mp4'
+            : 'https://d1qt3q0di8y5ko.cloudfront.net/landing_page_idle.mp4'
+        }
         type="video/mp4"
       />
     </video>
@@ -83,7 +88,7 @@ const Home: React.FC<HomeProps> = ({ startSession }) => {
     <Button
       variant="outline"
       onClick={() => {
-        trackHandler(setShowPasscode, 'lets-chat-btn')(true)
+        trackHandler(startSession, 'lets-chat-btn')(true)
       }}
       sx={{ ...styles.letsChatButton, ...sx }}
     >
@@ -110,13 +115,15 @@ const Home: React.FC<HomeProps> = ({ startSession }) => {
             controls={true}
             style={{ width: '335px', objectFit: 'cover' }}
           >
-            <source src={introVideoMP4} type="video/mp4" />
+            <source
+              src="https://d1qt3q0di8y5ko.cloudfront.net/sophieintro.mp4"
+              type="video/mp4"
+            />
             Loading...
           </video>
         </Box>
         <Text sx={styles.subtitle}>
-          I’m a digital assistant that can help you understand the capabilities
-          of 5G.
+          I’m a digital human that can help you with your questions.
         </Text>
         <StartButton sx={styles.startButton} />
 

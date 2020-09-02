@@ -1,5 +1,3 @@
-import LandingImage from '../assets/img/LandingPage.png'
-
 export const styles = {
   mainContainer: {
     label: 'homeMainContainer',
@@ -79,7 +77,7 @@ export const styles = {
   sophieBGImage: {
     label: 'sophieBGImage',
     position: 'fixed',
-    backgroundImage: `url('${LandingImage}')`,
+    backgroundImage: `url('https://d1qt3q0di8y5ko.cloudfront.net/landing_page_idle.jpg')`,
     backgroundSize: ['100%', '100%', '70%'],
     backgroundRepeat: 'no-repeat',
     backgroundPosition: ['top', 'top', '100% bottom'],
