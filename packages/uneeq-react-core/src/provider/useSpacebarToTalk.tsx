@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import { UneeqState } from '../uneeq'
 
 /**
  * Add/remove listeners to document for the spacebar key keydown/keyup

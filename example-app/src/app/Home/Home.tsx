@@ -2,9 +2,7 @@ import { useWindowWidth } from '@react-hook/window-size'
 import React, { useState } from 'react'
 import { Box, Button, Flex, Text } from 'rebass'
 import { trackHandler, useSupportedBrowser } from 'uneeq-react-core'
-import { PasscodeOverlay, UnsupportedBrowser } from 'uneeq-react-ui'
-import landingPageVideoFrame from '../assets/img/landingPageVideo.jpg'
-import landingPageVideoPortraitFrame from '../assets/img/landingPageVideoPortrait.jpg'
+import { UnsupportedBrowser } from 'uneeq-react-ui'
 import config from '../../config'
 import styles from './styles'
 
@@ -68,17 +66,11 @@ const SophieVideo = () => {
 
 interface HomeProps {
   startSession: (token: string) => void
-  saveFormData: (surveyData: any) => void
 }
 
 const Home: React.FC<HomeProps> = ({ startSession }) => {
   const { isBrowserSupported } = useSupportedBrowser()
   const [showPasscode, setShowPasscode] = useState(false)
-
-  const startSessionAndSaveData = (token: string) => {
-    console.log(token)
-    startSession(token)
-  }
 
   if (showPasscode && !isBrowserSupported) {
     return <UnsupportedBrowser close={() => setShowPasscode(false)} />
@@ -92,7 +84,7 @@ const Home: React.FC<HomeProps> = ({ startSession }) => {
       }}
       sx={{ ...styles.letsChatButton, ...sx }}
     >
-      {`Let's chat`}
+      Let's chat
     </Button>
   )
 
@@ -134,18 +126,11 @@ const Home: React.FC<HomeProps> = ({ startSession }) => {
         >
           <Paragraphs />
         </Flex>
-
-        {showPasscode && (
-          <PasscodeOverlay
-            start={trackHandler(startSessionAndSaveData, 'lets-chat-btn')}
-            close={() => setShowPasscode(!showPasscode)}
-            config={config}
-          />
-        )}
         <StartButton
           sx={{ display: ['none', 'none', 'none', 'none', 'block', 'block'] }}
         />
       </Box>
+      
     </Flex>
   )
 }

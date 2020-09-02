@@ -1,4 +1,5 @@
 import testState from '../../utils/testState'
+import { EventHandler } from '../../analytics'
 
 export interface UneeqCoreConfig {
   debug: boolean
@@ -6,6 +7,7 @@ export interface UneeqCoreConfig {
   conversationId: string
   tokenUrl: string
   orchestrationToken?: string
+  usePasscode: boolean
   playWelcome: boolean
   sendLocalVideo: boolean
   customData: any
@@ -15,8 +17,7 @@ export interface UneeqCoreConfig {
   timeoutWarning: number
   emptyTranscriptThreshold: number
   recaptchaSiteKey?: string
-  googleAnalyticsId?: string
-  googleAnalyticsEventCategory?: string
+  analytics?: EventHandler
   errorLevels: {}
 }
 

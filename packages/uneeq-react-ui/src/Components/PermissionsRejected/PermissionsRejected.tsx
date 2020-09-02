@@ -44,6 +44,7 @@ const PermissionsRejected: React.FC<PermissionsRejectedProps> = ({
 
         <Flex sx={styles.buttonsContainer}>
           <Button
+            data-testid="backButton"
             variant="secondaryInverted"
             sx={styles.backButton}
             onClick={() => {
@@ -55,6 +56,7 @@ const PermissionsRejected: React.FC<PermissionsRejectedProps> = ({
           </Button>
 
           <Button
+            data-testid="reload"
             sx={styles.reloadButton}
             variant="secondary"
             onClick={() => {

@@ -8,12 +8,12 @@ Renders PDFs of a conversation transcript or user-saved information for download
 
 # Getting Started
 ## Create your own copy of this repo
-[Fork on Github](fork)
+[Fork on Gitlab](fork)
 
 **or**
 
-Clone [p22-studio/uneeq-react](repo) as "upstream"
-> `git clone --origin upstream p22-studio/uneeq-react`
+Clone [uneeq-oss/react-frontend](repo) as "upstream"
+> `git clone --origin upstream git@gitlab.com:uneeq-oss/react-frontend.git`
 
 Add your own remote as "origin"
 > `git remote add origin git@github.com:you/your_repo.git`
@@ -55,8 +55,6 @@ Rename `my-app/.env.example` to `.env`, add your UneeQ details
 Run `yarn install`
 
 ## Run Locally
-Before first run, build packages with `yarn build-packages`
-
 Run `yarn start`
 
 ## Customize
@@ -67,9 +65,9 @@ Run `yarn build`
 Copy `my-app/build` to your webserver
 
 ## Update
-Avoid editing code withing `packages`. This will allow you to update your fork from [p22-studio/uneeq-react](repo) in future.
+Avoid editing code withing `packages`. This will allow you to update your fork from [react-frontend](repo) in future.
 
-Read the [releases](releases) to understand any changes that have been made, especially breaking changes.
+Read the CHANGELOG to understand any changes that have been made, especially breaking changes.
 
 Update your local:
 <!-- TODO: Should we suggest merging a specific version by tag?-->
@@ -197,8 +195,7 @@ Allows the welcome & initialisation to be skipped to go directly to a certain st
 No warranty or support is implied by UneeQ, please refer to LICENCE.md
 
 
-[repo]: https://github.com/p22-studio/uneeq-react
-[releases]: https://github.com/p22-studio/uneeq-react/releases
-[fork]: https://docs.github.com/en/github/getting-started-with-github/fork-a-repo
-[fork-sync]: https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/syncing-a-fork
+[repo]: https://gitlab.com/uneeq-oss/react-frontend
+[fork]: https://docs.gitlab.com/ee/user/project/repository/forking_workflow.html#creating-a-fork
+[fork-sync]: https://docs.gitlab.com/ee/user/project/repository/forking_workflow.html
 [markdown-cheatsheet]: https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet

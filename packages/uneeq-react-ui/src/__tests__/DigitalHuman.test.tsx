@@ -9,6 +9,8 @@ describe('DigitalHuman', () => {
     global.navigator.mediaDevices = { getUserMedia: () => Promise.resolve() }
     const { container } = renderIgnoringUnstableFlushDiscreteUpdates(
       <DigitalHuman
+        assets={{}}
+        loadingTips={[]}
         restart={() => {}}
         config={{}}
         onTimedOut={() => {}}

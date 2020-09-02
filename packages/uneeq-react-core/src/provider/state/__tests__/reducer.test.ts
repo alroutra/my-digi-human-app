@@ -16,7 +16,7 @@ const uneeqMessageReducerSpy = jest.spyOn(uneeqMessageReducer, 'default')
 Date.now = jest.fn(() => 1600000000000)
 
 const mockConfig = {
-  avatarName: 'Josie',
+  avatarName: 'a Digital Human',
   conversationId: '00000000-0000-0000-0000-00000000000',
   customData: {},
   debug: true,
@@ -32,6 +32,7 @@ const mockConfig = {
   informationInTranscript: false,
   playWelcome: true,
   recaptchaSiteKey: undefined,
+  usePasscode: false,
   sendLocalVideo: false,
   tapThreshold: 700,
   timeout: 300000,

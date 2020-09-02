@@ -21,7 +21,7 @@ export const avatarTextInputFinished1 = {
   permissionAllowed: true,
   transcript: [
     {
-      message: 'Hi, I’m Josie, I’m here to help you.',
+      message: 'Hi, I’m a Digital Human, I’m here to help you.',
       user: false,
       time: '2020-06-18T17:24:45.552Z'
     },
@@ -205,7 +205,7 @@ export const avatarTextInputFinished2 = {
   permissionAllowed: true,
   transcript: [
     {
-      message: 'Hi, I’m Josie.',
+      message: 'Hi, I’m a Digital Human.',
       user: false,
       time: '2020-06-18T17:24:45.552Z'
     },

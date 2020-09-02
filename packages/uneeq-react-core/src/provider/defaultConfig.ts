@@ -1,6 +1,7 @@
 export const defaultConfig = {
   debug: false,
 
+  usePasscode: false,
   playWelcome: true,
   sendLocalVideo: false,
   customData: {},

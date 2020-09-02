@@ -1,11 +1,11 @@
 {
   "name": "uneeq-react-core",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Uneeq React state library",
-  "author": "P22 Ltd",
+  "author": "UneeQ",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/p22-studio/uneeq-react.git",
+    "url": "https://gitlab.com/uneeq-oss/react-frontend",
     "directory": "packages/uneeq-react-core"
   },
   "scripts": {
@@ -31,7 +31,7 @@
   "dependencies": {
     "react-device-detect": "^1.13.1",
     "tslib": "^2.0.0",
-    "uneeq-js": "2.28.1",
+    "uneeq-js": "^2.30.0",
     "react-use-dimensions": "^1.2.1"
   },
   "publishConfig": {
@@ -91,5 +91,5 @@
       "!src/index.tsx"
     ]
   },
-  "license": "UNLICENSED"
+  "license": "ISC"
 }

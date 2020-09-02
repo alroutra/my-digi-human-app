@@ -1,3 +1,5 @@
+import { EventHandler } from "./analytics"
+
 interface AnyUneeqMessage extends UneeqMessage {
   [propName: string]: any
 }
@@ -8,6 +10,7 @@ interface Config {
   conversationId: string
   tokenUrl: string
   orchestrationToken?: string
+  usePasscode: boolean
   playWelcome: boolean
   sendLocalVideo: boolean
   customData: any
@@ -17,8 +20,7 @@ interface Config {
   timeoutWarning: number
   emptyTranscriptThreshold: number
   recaptchaSiteKey?: string
-  googleAnalyticsId?: string
-  googleAnalyticsEventCategory?: string
+  analytics?: EventHandler
   errorLevels: {
     ignore: string | number[]
     warning: string | number[]
@@ -64,7 +66,6 @@ type UneeqInformation =
     }>
 
 interface UneeqState {
-  // transcript: TranscriptItem[]
   permissionAllowed: UneeqPermissionState
 
   sessionEnded: boolean
@@ -105,33 +106,6 @@ interface UneeqState {
   contactDetailsGiven: boolean
   savedItems: any[]
   loadingPercentage: number
-
-  // expandedInfo: {
-  //   type: 'information' | 'savedItem'
-  //   index?: number
-  // } | null
-
   expandedInfo: any
   [property: string]: any
 }
-
-// type UneeqContext = {
-//   state: UneeqState
-//   dispatch: Dispatch<any>
-//   setAvatarVideo: any
-//   setLocalVideo: any
-//   localVideo: any
-//   speakTranscript: () => void
-//   sendText: () => void
-//   sendData: () => void
-//   setDevice: () => void
-//   endSession: () => void
-//   resetTimeout: () => void
-//   volume: { watch: (watcher: Dispatch<SetStateAction<number>>) => void; set: () => void }
-//   startRecording: () => void
-//   stopRecording: () => void
-//   config: UneeqConfig
-//   allDialogsClosed: boolean
-//   hideModal: () => void
-//   testMessage: (message: any) => void
-// }

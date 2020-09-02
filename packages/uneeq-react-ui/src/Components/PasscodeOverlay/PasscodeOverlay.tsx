@@ -110,7 +110,7 @@ const PasscodeError: React.FC<PasscodeErrorProps> = ({ closeModal }) => {
 
 interface PasscodeOverlayProps {
   close: () => void
-  start: () => void
+  start: (token: string) => void
   config: { tokenUrl: string; recaptchaSiteKey?: string }
 }
 const PasscodeOverlay: React.FC<PasscodeOverlayProps> = ({
@@ -124,7 +124,7 @@ const PasscodeOverlay: React.FC<PasscodeOverlayProps> = ({
   useOnClickOutside(modalRef, close)
 
   return (
-    <Overlay>
+    <Overlay sx={{ zIndex: 10 }}>
       <GoogleReCaptchaProvider reCaptchaKey={config.recaptchaSiteKey}>
         <Box sx={styles.modal} ref={modalRef}>
           {!showErrorModal && (

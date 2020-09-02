@@ -18,7 +18,11 @@ const MobileInformationButton = () => {
   }
 
   return (
-    <Flex sx={styles.mobileSavedItemsButton} onClick={expand}>
+    <Flex
+      sx={styles.mobileSavedItemsButton}
+      data-testid="mobileInfoButton"
+      onClick={expand}
+    >
       <InformationButtonIcon />
     </Flex>
   )

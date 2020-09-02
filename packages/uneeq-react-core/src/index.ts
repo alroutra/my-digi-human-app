@@ -21,4 +21,5 @@ export { trackEvent, trackHandler } from './analytics'
 
 export { default as testState } from './utils/testState'
 
-export { UneeqCoreConfig } from './provider/state/initialState'
+export type { UneeqCoreConfig } from './provider/state/initialState'
+export type { Uneeq } from 'uneeq-js'

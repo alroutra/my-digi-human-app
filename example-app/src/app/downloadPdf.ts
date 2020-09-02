@@ -14,13 +14,13 @@ export const downloadPdf = async (
     ({ downloadSavedItemsPdf, downloadTranscriptPdf }) => {
       if (type === 'transcript') {
         downloadTranscriptPdf({
-          filename: 'josie-transcript',
+          filename: 'uneeq-transcript',
           content: items,
           ...logos
         })
       } else {
         downloadSavedItemsPdf({
-          filename: 'josie-information',
+          filename: 'uneeq-information',
           content: items,
           ...logos
         })

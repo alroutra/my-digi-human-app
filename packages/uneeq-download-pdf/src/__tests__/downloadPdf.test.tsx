@@ -5,7 +5,7 @@
 // const transcriptItems = [
 //   {
 //     message:
-//       "Hi, I'm Josie. Hold down the space bar to ask me a question, or you can click on \"Show next steps\" for suggested options.",
+//       "Hold down the space bar to ask me a question, or you can click on \"Show next steps\" for suggested options.",
 //     user: false,
 //     time: new Date(Date.now() + 1)
 //   },

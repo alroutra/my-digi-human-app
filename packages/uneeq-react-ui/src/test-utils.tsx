@@ -16,7 +16,8 @@ export const contextMock = {
     feedbackGiven: false,
     contactDetailsGiven: false
   },
-  setAvatarVideo: jest.fn()
+  setAvatarVideo: jest.fn(),
+  sendData: jest.fn()
 }
 
 export const themeMock = {

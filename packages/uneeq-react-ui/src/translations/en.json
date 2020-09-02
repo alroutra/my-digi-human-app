@@ -61,14 +61,10 @@
     "Information": {
       "expand": "Expand",
       "saved": "Saved",
-      "save": "Save"
-    },
-    "InformationExpanded": {
+      "save": "Save",
       "remove": "Remove",
       "downloadAll": "Download all",
-      "minimise": "Minimise",
-      "saved": "Saved",
-      "save": "Save"
+      "minimise": "Minimise"
     }
   },
   "PasscodeOverlay": {

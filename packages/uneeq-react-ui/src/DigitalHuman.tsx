@@ -4,7 +4,8 @@ import {
   UneeqAvatar,
   UneeqLocalVideo,
   UneeqContext,
-  useUneeqState
+  useUneeqState,
+  Uneeq
 } from 'uneeq-react-core'
 import { Box } from 'rebass'
 import Menu from './Components/Menu'
@@ -79,7 +80,7 @@ interface DigitalHumanProps {
   onTimedOut: () => void
   onSessionEnded: () => void
   config: Partial<UneeqCoreConfig>
-  postInit: (uneeq: any) => void
+  postInit?: (uneeq: Uneeq) => void
   token?: string
   restart: () => void
   loadingTips: Array<LoadingTip>
