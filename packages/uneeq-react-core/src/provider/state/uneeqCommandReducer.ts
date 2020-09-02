@@ -1,4 +1,5 @@
 import { closeDialogs, closeModals } from './initialState'
+import { UneeqInformation, UneeqSuggestedResponses, UneeqState, Config } from '../../uneeq'
 
 export type UneeqCommand = {
   openInputBar?: boolean

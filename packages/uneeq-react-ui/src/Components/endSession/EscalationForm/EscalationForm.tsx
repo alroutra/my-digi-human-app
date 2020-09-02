@@ -108,6 +108,7 @@ const EscalationForm: React.FC<EscalationFormProps> = ({ restart }) => {
               >
                 <Input
                   type="email"
+                  data-testid="escalation-email"
                   id="email"
                   name="email"
                   value={email}

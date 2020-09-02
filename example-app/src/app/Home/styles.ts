@@ -1,6 +1,15 @@
 export const styles = {
   mainContainer: {
     label: 'homeMainContainer',
+    '&::-webkit-scrollbar, & *::-webkit-scrollbar': {
+      display: 'none'
+    },
+    '& *': {
+      msOverflowStyle: 'none',
+      scrollbarWidth: 'none'
+    },
+    msOverflowStyle: 'none',
+    scrollbarWidth: 'none',
     minWidth: '100%',
     height: '100%',
     position: 'absolute',
@@ -32,7 +41,8 @@ export const styles = {
       top: 0,
       left: 0,
       zIndex: 4
-    }
+    },
+    maxHeight: '100%'
   },
   videoContainer: {
     my: 2,
@@ -51,7 +61,9 @@ export const styles = {
     color: 'textAlternate',
     textAlign: 'left',
     zIndex: 4,
-    width: '100%'
+    width: '100%',
+    maxHeight: '100%',
+    overflowY: 'scroll'
   },
   mobileImSophie: {
     display: ['flex', 'flex', 'flex', 'flex', 'none', 'none'],
@@ -118,8 +130,8 @@ export const styles = {
   },
   startButton: {
     display: ['block', 'block', 'block', 'block', 'none', 'none'],
-    mt: [-50, -50, -70, -70, 1, 1],
-    mb: [50, 50, 50, 50, 1, 1],
+    mt: [0, 0, 0, 0, 1, 1],
+    mb: [0, 0, 0, 0, 1, 1],
     mx: ['auto', 'auto', 'auto', 'auto', 0, 0]
   },
   surveyToggle: {

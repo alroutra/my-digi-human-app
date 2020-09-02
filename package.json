@@ -26,9 +26,11 @@
     "build": "yarn build-example",
 
     "test": "yarn workspaces run test",
-    "coverage": "yarn workspaces run coverage"
+    "coverage": "yarn workspaces run coverage",
+
+    "postinstall": "yarn build-packages"
   },
-  "license": "UNLICENSED",
+  "license": "ISC",
   "devDependencies": {
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react-hooks": "^3.4.1",

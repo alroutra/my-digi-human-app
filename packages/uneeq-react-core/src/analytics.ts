@@ -1,22 +1,15 @@
-import ReactGA from 'react-ga'
+import { AnyUneeqMessage } from './uneeq'
 
-let eventCategory: string | undefined
-export const initAnalytics = (config: Config) => {
-  if (config.googleAnalyticsId) {
-    ReactGA.initialize(config.googleAnalyticsId, {
-      standardImplementation: false
-    })
-    eventCategory = config.googleAnalyticsEventCategory
-  }
+export type EventHandler = (label: string, action?: string) => void
+
+let eventHandler: EventHandler | undefined
+export const setEventHandler = (handler: EventHandler) => {
+  eventHandler = handler
 }
 
 export const trackEvent = (label: string, action?: string) => {
-  if (eventCategory) {
-    ReactGA.event({
-      category: eventCategory,
-      action: action ? action : 'click',
-      label
-    })
+  if (eventHandler) {
+    eventHandler(label, action)
   }
 }
 

@@ -16,8 +16,11 @@ const config = {
   debug: true,
 
   url: process.env.REACT_APP_UNEEQ_URL!,
-  conversationId: process.env.REACT_APP_UNEEQ_CONVERSATION_ID!,
+  conversationId: process.env.REACT_APP_UNEEQ_PERSONA_ID!,
   tokenUrl: process.env.REACT_APP_UNEEQ_TOKEN_URL!,
+
+  // Is a passcode needed to obtain a token? Show a passcode screen so the user can provide it.
+  usePasscode: false,
 
   // welcome can be suppressed during dev with REACT_APP_NO_WELCOME=1
   playWelcome: !process.env.REACT_APP_NO_WELCOME,
@@ -35,8 +38,10 @@ const config = {
   timeoutWarning: 180 * 1000, // ms
   // e.g. timeout=90sec, timeoutWarning=30sec - after 60 secs of inactivity warning will show, after 90 secs sessions ends
 
+  // If the avatar is not centred within the video avatarPosition needs to be changed.
+  // This will ensure correct positioning narrow (mobile) screens
   avatarAspect: 16 / 9, // video aspect ratio
-  avatarPosition: 0.5, // Where is the avatar in the video frame
+  avatarPosition: 0.5, // Where is the avatar in the video frame (0.5 = center, 0.33 = 1/3 from the left)
 
   informationInTranscript: false,
 
@@ -45,16 +50,25 @@ const config = {
 
   // How many empty transcripts before an error is shown
   emptyTranscriptThreshold: 3,
-  avatarName: 'Sophie',
+  avatarName: 'a Digital Human',
 
   // Recaptcha
   recaptchaSiteKey: '', // FIXME
 
   downloadPdf,
 
-  // Google analytics
-  googleAnalyticsId: '', // FIXME
-  googleAnalyticsEventCategory: '', // FIXME
+  // Optional - track events
+  // analytics: (label: string, action?: string) => {
+  //   console.info('analytics event:', { label, action })
+  //   // Send the event to your analytics backend
+  //   // Example Google Universal Analytics (gtag.js)
+  //   // https://developers.google.com/analytics/devguides/collection/gtagjs
+  //   gtag('event', 'action', {
+  //     event_category: 'my-category',
+  //     event_label: label
+  //   })
+  // },
+
   ...environment
 }
 

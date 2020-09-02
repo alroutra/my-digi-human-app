@@ -7,6 +7,6 @@ describe('AvatarUnavailable', () => {
   it('should render', () => {
     const { findByLabelText } = render(<AvatarUnavailable />)
 
-    expect(findByLabelText('Josie is busy')).toBeDefined()
+    expect(findByLabelText('a Digital Human is busy')).toBeDefined()
   })
 })

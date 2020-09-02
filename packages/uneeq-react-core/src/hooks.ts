@@ -17,6 +17,7 @@ import UneeqContext from './provider/UneeqContext'
 import { compareVersionNumbers } from './utils/compareVersionNumbers'
 import { useTheme } from 'emotion-theming'
 import { useWindowWidth } from '@react-hook/window-size'
+import { Config } from './uneeq'
 
 var AudioContext =
   (window as any).AudioContext || (window as any).webkitAudioContext // Default // Safari and old versions of Chrome

@@ -1,11 +1,11 @@
 {
   "name": "uneeq-download-pdf",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "PDF render for uneeq-react-core",
-  "author": "P22 Ltd",
+  "author": "UneeQ",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/p22-studio/uneeq-react.git",
+    "url": "https://gitlab.com/uneeq-oss/react-frontend",
     "directory": "packages/uneeq-download-pdf"
   },
   "scripts": {
@@ -47,5 +47,5 @@
   "devDependencies": {
     "@babel/plugin-proposal-optional-chaining": "^7.10.4"
   },
-  "license": "UNLICENSED"
+  "license": "ISC"
 }

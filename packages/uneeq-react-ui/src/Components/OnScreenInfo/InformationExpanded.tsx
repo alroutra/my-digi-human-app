@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useEffect, useState } from 'react'
+import React, { useCallback, useContext, useEffect } from 'react'
 import { Card, Box, Button, Flex, Image, Text } from 'rebass'
 import { styles as s } from './styles'
 import { ReactComponent as MinimizeIcon } from '../../assets/img/minimize.svg'
@@ -12,6 +12,7 @@ import { ReactComponent as ChevronRight } from '../../assets/img/chev-right.svg'
 import { ReactComponent as HeartFullIcon } from '../../assets/img/heart-full.svg'
 import { ReactComponent as HeartIcon } from '../../assets/img/heart.svg'
 import { useTranslation } from 'react-i18next'
+import hash from 'hash-sum'
 const styles = s.informationExpanded
 
 const InformationExpanded = () => {
@@ -21,6 +22,7 @@ const InformationExpanded = () => {
     selectedSavedItem,
     savedItems
   } = useUneeqState()
+
   const { t } = useTranslation()
 
   const { dispatch, config } = useContext(UneeqContext)
@@ -56,13 +58,10 @@ const InformationExpanded = () => {
     }
   }, [setSavedItem, selectedSavedItem, dispatch, savedItems.length, hide])
 
-  const [saved, setSaved] = useState(false)
-
   const save = () => {
     dispatch({
       type: 'saveInformation'
     })
-    setSaved(true)
   }
 
   if (expandedInfo === null) return null
@@ -82,7 +81,7 @@ const InformationExpanded = () => {
           {expandedSavedItem && (
             <Button sx={styles.trashButton} variant="unstyled" onClick={remove}>
               <TrashIcon />
-              {t('OnScreenInfo.InformationExpanded.remove')}
+              {t('OnScreenInfo.Information.remove')}
             </Button>
           )}
           {expandedSavedItem && (
@@ -92,7 +91,7 @@ const InformationExpanded = () => {
               onClick={() => downloadPdf('savedItems', savedItems)}
             >
               <DownloadIcon />
-              {t('OnScreenInfo.InformationExpanded.downloadAll')}
+              {t('OnScreenInfo.Information.downloadAll')}
             </Button>
           )}
           {expandedInformation && (
@@ -102,19 +101,21 @@ const InformationExpanded = () => {
               onClick={hide}
             >
               <MinimizeIcon />
-              {t('OnScreenInfo.InformationExpanded.minimise')}
+              {t('OnScreenInfo.Information.minimise')}
             </Button>
           )}
           {!expandedSavedItem &&
-            (saved ? (
+            (savedItems.some(
+              (savedItem: any) => hash(savedItem) === hash(information)
+            ) ? (
               <Button sx={styles.saveButton} variant="unstyled">
                 <HeartFullIcon />
-                {t('OnScreenInfo.InformationExpanded.saved')}
+                {t('OnScreenInfo.Information.saved')}
               </Button>
             ) : (
               <Button sx={styles.saveButton} variant="unstyled" onClick={save}>
                 <HeartIcon />
-                {t('OnScreenInfo.InformationExpanded.save')}
+                {t('OnScreenInfo.Information.save')}
               </Button>
             ))}
         </Flex>
@@ -122,6 +123,7 @@ const InformationExpanded = () => {
           <Flex sx={styles.paginationContainer}>
             <Button
               variant="unstyled"
+              data-testid="previous-item"
               onClick={previous}
               disabled={selectedSavedItem === 0}
             >
@@ -129,6 +131,7 @@ const InformationExpanded = () => {
             </Button>
             <Text>{`${selectedSavedItem + 1} of ${savedItems.length}`}</Text>
             <Button
+              data-testid="next-item"
               variant="unstyled"
               onClick={next}
               disabled={selectedSavedItem === savedItems.length - 1}

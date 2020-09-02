@@ -1,6 +1,7 @@
 import uneeqCommandReducer from './uneeqCommandReducer'
 import uneeqMessageReducer from './uneeqMessageReducer'
 import { closeModals, closeDialogs } from './initialState'
+import { Config, UneeqState } from '../../uneeq'
 
 export const reducer = (
   currentState: UneeqState,

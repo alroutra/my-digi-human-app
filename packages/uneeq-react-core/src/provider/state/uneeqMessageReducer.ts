@@ -1,5 +1,6 @@
 import { getErrorLevel } from '../../hooks'
 import stripSsml from './stripSsml'
+import { UneeqState, AnyUneeqMessage, Config } from '../../uneeq'
 
 export const uneeqMessageReducer = (
   state: UneeqState,

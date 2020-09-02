@@ -36,6 +36,7 @@ const Feedback: React.FC<FeedbackProps> = ({ restart }) => {
   }
   const leaveChat = () => {
     giveFeedback()
+
     if (config.showEscalationForm) {
       if (!contactDetailsGiven) {
         dispatch({ type: 'openEscalationForm', payload: true })
@@ -77,6 +78,7 @@ const Feedback: React.FC<FeedbackProps> = ({ restart }) => {
             {[0, 1, 2, 3, 4, 5, 11, 6, 7, 8, 9, 10].map(num => (
               <Flex
                 key={num}
+                data-testid={`recomm-${num}`}
                 onClick={() => setRecommendationScore(num)}
                 sx={{
                   ...styles.number,
@@ -114,6 +116,7 @@ const Feedback: React.FC<FeedbackProps> = ({ restart }) => {
             {[0, 1, 2, 3, 4, 5, 11, 6, 7, 8, 9, 10].map(num => (
               <Flex
                 key={num}
+                data-testid={`easy-${num}`}
                 onClick={() => setFeedbackScore(num)}
                 sx={{
                   ...styles.number,
@@ -144,6 +147,7 @@ const Feedback: React.FC<FeedbackProps> = ({ restart }) => {
         <Textarea
           sx={styles.textArea}
           id="comment"
+          data-testid="comment-textarea"
           name="comment"
           value={feedbackText}
           onChange={e => setFeedbackText(e.target.value)}

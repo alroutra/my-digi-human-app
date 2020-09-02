@@ -1,19 +1,38 @@
 import React from 'react'
-import { render } from '../../../../test-utils'
+import { contextMock, render } from '../../../../test-utils'
 import '@testing-library/jest-dom/extend-expect'
 import EscalationForm from '../EscalationForm'
-import { useUneeqState } from 'uneeq-react-core'
-jest.mock('uneeq-react-core')
-;(useUneeqState as jest.Mock).mockReturnValue({
-  escalationFormOpen: true
-})
+import { fireEvent } from '@testing-library/react'
+import translation from '../../../../translations/en.json'
+import * as core from 'uneeq-react-core'
+jest.spyOn(core, 'useUneeqState')
 
 describe('EscalationForm', () => {
-  it('should render correctly', () => {
-    const { container } = render(<EscalationForm restart={() => {}} />)
+  it('should leave chat correctly when from server', () => {
+    const restart = jest.fn()
+    core.useUneeqState.mockImplementation(() => ({
+      escalationFormOpen: true,
+      escalationFormFromServer: true,
+      feedbackGiven: false
+    }))
 
-    expect(container).toHaveTextContent(
-      'Would you like to go in the draw to win a staff prize?'
+    const { getByText, getByTestId } = render(
+      <EscalationForm restart={restart} />,
+      {
+        context: {
+          config: { showEscalationForm: true }
+        }
+      }
     )
+    const email = getByTestId('escalation-email')
+    fireEvent.change(email, { target: { value: 'test@test.com' } })
+    fireEvent.click(
+      getByText(translation.endSession.EndSessionActions.leaveChat)
+    )
+
+    expect(contextMock.dispatch).toHaveBeenCalledWith({
+      type: 'openFeedback',
+      payload: true
+    })
   })
 })

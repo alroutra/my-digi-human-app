@@ -1,6 +1,5 @@
-import ReactGA from 'react-ga'
-import { DigitalHuman } from 'uneeq-react-ui'
-import React, { useState, useEffect, useRef } from 'react'
+import { DigitalHuman, PasscodeOverlay } from 'uneeq-react-ui'
+import React, { useState, useRef } from 'react'
 import { Box, Button } from 'rebass'
 
 import { ThemeProvider } from 'emotion-theming'
@@ -84,25 +83,32 @@ const CustomFeedback = ({ restart, close }: any) => {
 const App = () => {
   // For faster testing, skip straight to digitalHuman
   const [step, goTo] = useState(testState ? 'digitalHuman' : 'welcome')
-  const [surveyData, setSurveyData] = useState({
-    spokenBefore: false,
-    techSavvy: false,
-    thoughtsOnAI: ''
-  })
 
-  const postInit = (uneeq: any) => {
-    uneeq.sendTranscript(JSON.stringify(surveyData))
-  }
+  // const postInit = (uneeq: Uneeq) => {
+  //   console.info('initialized')
+  //   uneeq.sendTranscript('Example using initialized uneeq instance')
+  // }
+
+  // passcode is an overlay, not a step
+  const [showPasscode, setShowPasscode] = useState(false)
 
   const tokenRef = useRef<string>()
+  const start = () => {
+    // Show passcode overlay or go straight to digitalHuman
+    if (config.usePasscode) {
+      setShowPasscode(true)
+    } else {
+      goTo('digitalHuman')
+    }
+  }
 
-  const start = (token: string) => {
+
+  const startWithToken = (token: string) => {
     tokenRef.current = token
     goTo('digitalHuman')
   }
 
   const restart = () => goTo('welcome')
-  useEffect(() => ReactGA.pageview(step), [step])
 
   return (
     <ThemeProvider theme={theme}>
@@ -119,7 +125,7 @@ const App = () => {
             token={tokenRef.current}
             loadingTips={loadingTips}
             onTimedOut={() => goTo('timed-out')}
-            postInit={postInit}
+            // postInit={postInit}
             restart={restart}
             // CustomFeedback={CustomFeedback} // uncomment to enable custom Feedback screen
             onSessionEnded={() => goTo('restart')}
@@ -127,9 +133,13 @@ const App = () => {
         ) : step === 'timed-out' ? (
           <SessionTimedOut restart={restart} />
         ) : (
-          <Home
-            startSession={() => goTo('digitalHuman')}
-            saveFormData={setSurveyData}
+          <Home startSession={start} />
+        )}
+        {showPasscode && (
+          <PasscodeOverlay
+            start={startWithToken}
+            close={() => setShowPasscode(false)}
+            config={config}
           />
         )}
       </Box>

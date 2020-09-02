@@ -17,48 +17,45 @@ export const styles = {
   conatianer: {
     label: 'onscreen-info',
     position: 'absolute',
-    right: ['5%', '5%', '5%', '5%', 80, 80],
-    maxHeight: ['90%', '90%', '90%', '90%', '50%', '50%'],
+    right: [20, 20, 20, 20, 80, 80],
     maxWidth: ['90%', '90%', '90%', '90%', 560, 560],
-    minWidth: ['auto', 'auto', 'auto', 'auto', 493, 493],
-    top: ['5%', '5%', '5%', '5%', 88, 88],
-    bottom: [200, 200, 200, 200, 154, 154],
-    width: ['90%', '90%', '90%', '90%', 'auto', 'auto'],
+    top: [20, 20, 20, 20, 88, 88],
+    bottom: [20, 20, 20, 20, 154, 154],
+    width: '100%',
     display: ['none', 'none', 'none', 'none', 'flex', 'flex'],
     flexDirection: 'column',
     justifyContent: 'center',
-    height: '90%',
-    left: ['5%', '5%', '5%', '5%', 'auto', 'auto'],
+    left: [20, 20, 20, 20, 'auto', 'auto'],
     zIndex: [4, 4, 4, 4, 1, 1]
   },
   card: {
     label: 'info-card',
     color: 'text',
+    display: 'flex',
     flexDirection: 'column',
-    maxHeight: '100%',
-    height: ['100%', '100%', '100%', '100%', 'auto', 'auto']
+    minHeight: 250
   },
   information: {
     content: {
       label: 'information-content',
-      minHeight: [70, 70, 70, 70, 130, 130],
-      height: [
-        'calc(100% - 55px)',
-        'calc(100% - 55px)',
-        'calc(100% - 55px)',
-        'calc(100% - 55px)',
-        'calc(100% - 55px)',
-        'auto'
-      ],
-      maxHeight: ['none', 'none', 'none', 'none', 300, 300],
-      overflow: 'auto',
       position: 'relative',
+      minHeight: 0,
       li: {
         fontSize: 1
       },
       '& a:visited': {
         color: 'secondary'
-      }
+      },
+      
+      // Needed to make sure safari keeps 'information-scroll' from overflowing this
+      display: 'flex',
+      flexDirection: 'column'
+    },
+    scroll: {
+      label: 'information-scroll',
+      overflow: 'auto',
+      maxHeight: '100%',
+      py: '15px'
     },
     closeButtonContainer: {
       display: ['flex', 'flex', 'flex', 'flex', 'none', 'none'],
@@ -73,32 +70,20 @@ export const styles = {
     topFade: {
       label: 'topFade',
       height: 25,
-      width: [
-        'calc(100% - 40px)',
-        'calc(100% - 40px)',
-        'calc(100% - 40px)',
-        'calc(100% - 40px)',
-        'calc(100% - 40px)',
-        461
-      ],
+      left: 0,
+      right: 0,
       position: 'absolute',
-      top: ['6px', '6px', '17px', '17px', '17px', '17px'],
+      top:0,
       zIndex: 1,
       background:
         'linear-gradient(to bottom, rgba(255, 255, 255, 1) 50%,rgba(255, 255, 255, 0) 100%);'
     },
     bottomFade: {
-      bottom: [44, 44, 55, 55, 83, 83],
-      height: 25,
-      width: [
-        'calc(100% - 40px)',
-        'calc(100% - 40px)',
-        'calc(100% - 40px)',
-        'calc(100% - 40px)',
-        461,
-        461
-      ],
       label: 'bottomFade',
+      bottom:0,
+      height: 25,
+      left: 0,
+      right: 0,
       position: 'absolute',
       background:
         'linear-gradient(to top, rgba(255, 255, 255, 1) 50%,rgba(255, 255, 255, 0) 100%);'
@@ -210,7 +195,8 @@ export const styles = {
         color: 'secondary'
       },
       msOverflowStyle: 'none',
-      scrollbarWidth: 'none'
+      scrollbarWidth: 'none',
+      maxHeight: 350
     },
     saveButton: {
       width: 82,

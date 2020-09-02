@@ -7,7 +7,7 @@ import React, {
   useMemo
 } from 'react'
 import { Uneeq } from 'uneeq-js'
-import { initAnalytics, trackUneeqMessage } from '../analytics'
+import { setEventHandler, trackUneeqMessage } from '../analytics'
 import { useSupportedBrowser } from '../hooks'
 import testState from '../utils/testState'
 import defaultConfig from './defaultConfig'
@@ -20,12 +20,13 @@ import UneeqContext from './UneeqContext'
 import usePreApprove from './usePreApprove'
 import useTimeoutUpdate from './useTimeoutUpdate'
 import useSpacebarToTalk from './useSpacebarToTalk'
+import { AnyUneeqMessage, UneeqState, Config } from '../uneeq'
 
 interface UneeqProviderProps {
   children: React.ReactNode
   onSessionEnded: () => void
   onTimedOut: () => void
-  postInit: (uneeq: any) => void
+  postInit?: (uneeq: Uneeq) => void
   config: Partial<UneeqCoreConfig>
   token?: string
 }
@@ -98,7 +99,11 @@ const UneeqProvider: React.FC<UneeqProviderProps> = ({
   // Manage permissions approval process (unless using a testState)
   usePreApprove(testState ? () => {} : dispatch)
 
-  initAnalytics(finalConfig)
+  useEffect(() => {
+    if (finalConfig.analytics) {
+      setEventHandler(finalConfig.analytics)
+    }
+  }, [finalConfig.analytics])
 
   // put handleUneeqMessage into a ref so we can turn it into a noop prevent UneeQ-js from calling it after unmount
   const messageHandler = useRef(handleUneeqMessage)
@@ -179,7 +184,7 @@ const UneeqProvider: React.FC<UneeqProviderProps> = ({
             dispatch({ type: 'tokenError', message: error.message })
           })
       }
-      postInit(uneeq.current)
+      if (postInit) postInit(uneeq.current)
       // Return cleanup
       return () => {
         // make the handler a noop so dispatch is not called after unmount
