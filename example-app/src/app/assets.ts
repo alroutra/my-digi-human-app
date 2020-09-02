@@ -1,5 +1,3 @@
-import permissionsMP4 from './assets/video/permissions.mp4'
-import permissionsWebm from './assets/video/permissions.webm'
 import testMP3 from './assets/audio/test.mp3'
 
 const assets = {
@@ -9,8 +7,8 @@ const assets = {
   },
   video: {
     permissions: {
-      permissionsMP4,
-      permissionsWebm
+      permissionsMP4: 'https://d1qt3q0di8y5ko.cloudfront.net/permissions.mp4',
+      permissionsWebm: 'https://d1qt3q0di8y5ko.cloudfront.net/permissions.webm'
     }
   }
 }

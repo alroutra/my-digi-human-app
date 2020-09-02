@@ -10,7 +10,6 @@ import config from '../config'
 import Home from './Home'
 import assets from './assets'
 
-import backgroundImage from './assets/img/background.png'
 import { testState } from 'uneeq-react-core'
 import SessionTimedOut from './SessionTimedOut'
 
@@ -26,8 +25,8 @@ const backgroundStyle = {
     'none',
     'none',
     'none',
-    `url('${backgroundImage}')`,
-    `url('${backgroundImage}')`
+    `url('https://d1qt3q0di8y5ko.cloudfront.net/squiggle_lr.jpg')`,
+    `url('https://d1qt3q0di8y5ko.cloudfront.net/squiggle_lr.jpg')`
   ],
   overflow: 'hidden',
   position: 'absolute'
@@ -128,7 +127,10 @@ const App = () => {
         ) : step === 'timed-out' ? (
           <SessionTimedOut restart={restart} />
         ) : (
-          <Home startSession={start} saveFormData={setSurveyData} />
+          <Home
+            startSession={() => goTo('digitalHuman')}
+            saveFormData={setSurveyData}
+          />
         )}
       </Box>
     </ThemeProvider>
