@@ -1,3 +1,9 @@
+# Project Description
+An example-only UneeQ frontend UI project built using uneeq-js SDK and React. This codebase serves as an example for the developers of UneeQ’s partners / customers to build their own frontend project.
+
+# Project delivered as-is
+Please see [LICENCE.md](./LICENCE.md) for full licence.
+
 # Packages
 ## uneeq-react-core
 Provides React state management for uneeq-js-sdk
