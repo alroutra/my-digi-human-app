@@ -8,7 +8,8 @@ const logos = {
 
 export const downloadPdf = async (
   type: 'transcript' | 'savedItems',
-  items: any
+  items: any,
+  sessionId: string
 ) => {
   import('uneeq-download-pdf').then(
     ({ downloadSavedItemsPdf, downloadTranscriptPdf }) => {
@@ -16,12 +17,14 @@ export const downloadPdf = async (
         downloadTranscriptPdf({
           filename: 'uneeq-transcript',
           content: items,
+          sessionId,
           ...logos
         })
       } else {
         downloadSavedItemsPdf({
           filename: 'uneeq-information',
           content: items,
+          sessionId,
           ...logos
         })
       }

@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.1.0] - 2020-09-11
+
+### Changed
+- Colors for Push-to-Talk button are now set in the theme
+  - see example-app/src/theme.ts `// PTT animation` and `// PTT desktop colors & gradients`
+- PDF Downloads can include SessionId
+  - see example-app/src/app/downloadPdf.ts
+- Feedback form remembers user input
+- Improvements to example-app home page
+
+### Fixed
+- Bug causing Escalation Form to show when `config.showEscalationForm=false`
+- PDF download bug on Android
+- Passcode Overlay scroll bug
+
 ## [1.0.0] - 2020-09-02
 
 ### Added

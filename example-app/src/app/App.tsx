@@ -60,7 +60,8 @@ const loadingTips = [
 
 // example CustomFeedback component that can be passed to DigitalHuman
 // to customise the look and feel of this screen
-const CustomFeedback = ({ restart, close }: any) => {
+const CustomFeedback = ({ restart, close, isOpen }: any) => {
+  if (!isOpen) return null
   return (
     <Box
       sx={{
@@ -106,6 +107,7 @@ const App = () => {
   const startWithToken = (token: string) => {
     tokenRef.current = token
     goTo('digitalHuman')
+    setShowPasscode(false)
   }
 
   const restart = () => goTo('welcome')

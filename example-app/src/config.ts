@@ -21,6 +21,8 @@ const config = {
 
   // Is a passcode needed to obtain a token? Show a passcode screen so the user can provide it.
   usePasscode: false,
+  // Recaptcha - if used with passcode
+  recaptchaSiteKey: process.env.REACT_APP_RECAPTCHA_SITE_KEY!,
 
   // welcome can be suppressed during dev with REACT_APP_NO_WELCOME=1
   playWelcome: !process.env.REACT_APP_NO_WELCOME,
@@ -51,9 +53,6 @@ const config = {
   // How many empty transcripts before an error is shown
   emptyTranscriptThreshold: 3,
   avatarName: 'a Digital Human',
-
-  // Recaptcha
-  recaptchaSiteKey: '', // FIXME
 
   downloadPdf,
 

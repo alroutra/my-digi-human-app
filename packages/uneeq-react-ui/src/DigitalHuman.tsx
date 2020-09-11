@@ -60,12 +60,11 @@ const DigitalHumanContent = ({
         <Timeout />
         <PrivacySummary />
         <EndSessionConfirm restart={restart} />
-        {feedbackOpen && (
-          <FinalFeedback
-            restart={restart}
-            close={() => dispatch({ type: 'openFeedback', payload: false })}
-          />
-        )}
+        <FinalFeedback
+          restart={restart}
+          close={() => dispatch({ type: 'openFeedback', payload: false })}
+          isOpen={feedbackOpen}
+        />
         <EscalationForm restart={restart} />
 
         <Errors />

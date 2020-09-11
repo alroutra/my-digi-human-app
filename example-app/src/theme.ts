@@ -1,27 +1,46 @@
+const colors = {
+  text: '#000000',
+  textLight: '#393939',
+  textAlternate: '#FFFFFF',
+
+  primary: '#225bb5',
+  primaryLight: '#4287f5',
+  primaryText: '#FFFFFF',
+
+  secondary: '#22b5a1',
+  secondaryLight: '#4bd6c4',
+  secondaryText: '#FFFFFF',
+
+  greyDark: '#50575D',
+  grey: '#BDC0C7',
+  greyLight: '#F6F6F6',
+
+  error: '#BF2828',
+  warning: '#FBBD1D',
+
+  // TODO create our own progress bar with rebass so we can use variant="timoutBar"
+  timeoutColor: '#1C8728',
+  timeoutTrailColor: '#BDC0C7'
+}
+
+const hex2rgba = (hex: string, alpha = 1) => {
+  const [r, g, b] = hex.match(/\w\w/g)!.map(x => parseInt(x, 16))
+  return `rgba(${r},${g},${b},${alpha})`
+}
+
 export const theme = {
   colors: {
-    text: '#000000',
-    textLight: '#393939',
-    textAlternate: '#FFFFFF',
+    ...colors,
 
-    primary: '#225bb5',
-    primaryLight: '#4287f5',
-    primaryText: '#FFFFFF',
-
-    secondary: '#22b5a1',
-    secondaryLight: '#4bd6c4',
-    secondaryText: '#FFFFFF',
-
-    greyDark: '#50575D',
-    grey: '#BDC0C7',
-    greyLight: '#F6F6F6',
-
-    error: '#BF2828',
-    warning: '#FBBD1D',
-
-    // TODO create our own progress bar with rebass so we can use variant="timoutBar"
-    timeoutColor: '#1C8728',
-    timeoutTrailColor: '#BDC0C7'
+    // PTT animation
+    pttMobileGlow: hex2rgba(colors.primaryLight, 0.2), // Mobile - glow around button while recording
+    // PTT desktop colors & gradients
+    pttColRecording: 'white',
+    pttImgRecording: `radial-gradient(circle, ${colors.primaryLight} 0%, white 100%)`,
+    pttColSending: 'primaryLight',
+    pttImgSending: `radial-gradient(circle, white 0%,${colors.primaryLight} 100%)`,
+    pttColWaiting: 'primaryLight',
+    pttImgWaiting: 'primary'
   },
   fonts: {
     body: 'Overpass, Roboto, system-ui, sans-serif',

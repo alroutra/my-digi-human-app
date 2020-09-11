@@ -124,7 +124,7 @@ const PasscodeOverlay: React.FC<PasscodeOverlayProps> = ({
   useOnClickOutside(modalRef, close)
 
   return (
-    <Overlay sx={{ zIndex: 10 }}>
+    <Overlay sx={{ zIndex: 10, position: 'fixed' }}>
       <GoogleReCaptchaProvider reCaptchaKey={config.recaptchaSiteKey}>
         <Box sx={styles.modal} ref={modalRef}>
           {!showErrorModal && (
