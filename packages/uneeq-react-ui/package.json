@@ -39,7 +39,7 @@
     "react-i18next": "^11.7.0",
     "react-sweet-progress": "^1.1.2",
     "tslib": "^2.0.0",
-    "uneeq-react-core": "1.0.0"
+    "uneeq-react-core": "1.1.0"
   },
   "devDependencies": {
     "@rollup/plugin-image": "^2.0.5",
