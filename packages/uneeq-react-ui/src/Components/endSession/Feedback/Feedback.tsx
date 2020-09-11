@@ -9,19 +9,20 @@ import { Trans, useTranslation } from 'react-i18next'
 
 interface FeedbackProps {
   restart: () => void
+  isOpen: boolean
 }
 
-const Feedback: React.FC<FeedbackProps> = ({ restart }) => {
+const Feedback: React.FC<FeedbackProps> = ({ restart, isOpen }) => {
   const [feedbackScore, setFeedbackScore] = useState<number | undefined>()
   const [recommendationScore, setRecommendationScore] = useState<
     number | undefined
   >()
   const [feedbackText, setFeedbackText] = useState('')
   const { dispatch, config, sendData } = useContext(UneeqContext)
-  const { feedbackOpen, contactDetailsGiven } = useUneeqState()
+  const { contactDetailsGiven } = useUneeqState()
   const { t } = useTranslation()
 
-  if (!feedbackOpen) return null
+  if (!isOpen) return null
 
   const giveFeedback = () => {
     if (feedbackScore || feedbackText) {

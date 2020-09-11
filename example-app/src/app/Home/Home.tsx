@@ -115,7 +115,7 @@ const Home: React.FC<HomeProps> = ({ startSession }) => {
           </video>
         </Box>
         <Text sx={styles.subtitle}>
-          I’m a digital human that can help you with your questions.
+          I’m a digital assistant that can help you with your questions.
         </Text>
         <StartButton sx={styles.startButton} />
 

@@ -25,7 +25,7 @@ const InformationExpanded = () => {
 
   const { t } = useTranslation()
 
-  const { dispatch, config } = useContext(UneeqContext)
+  const { dispatch, config, sessionId } = useContext(UneeqContext)
   const { downloadPdf } = config
 
   const setSavedItem = useCallback(
@@ -88,7 +88,7 @@ const InformationExpanded = () => {
             <Button
               variant="unstyled"
               sx={styles.downloadButton}
-              onClick={() => downloadPdf('savedItems', savedItems)}
+              onClick={() => downloadPdf('savedItems', savedItems, sessionId)}
             >
               <DownloadIcon />
               {t('OnScreenInfo.Information.downloadAll')}

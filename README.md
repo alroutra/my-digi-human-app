@@ -2,6 +2,8 @@
 An example-only UneeQ frontend UI project built using uneeq-js SDK and React. This codebase serves as an example for the developers of UneeQ’s partners / customers to build their own frontend project.
 
 # Project delivered as-is
+There is no support express or implied for this repository. While we take care to ensure compatibility and update dependencies from time to time for security reasons, you are encouraged to do your own due diligence on the dependencies used with this project. Neither P22 nor UneeQ are responsible for any issues or trouble, damages or conflicts arising from your use of this project. Please see [LICENCE.md](./LICENCE.md) for full licence.
+
 Please see [LICENCE.md](./LICENCE.md) for full licence.
 
 # Packages

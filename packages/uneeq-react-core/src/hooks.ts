@@ -65,8 +65,9 @@ export const useUneeqError = () => {
 
 export const useTranscript = () => {
   const { transcript } = useUneeqState()
-  const { config } = useContext(UneeqContext)
-  const downloadTranscript = () => config.downloadPdf('transcript', transcript)
+  const { config, sessionId } = useContext(UneeqContext)
+  const downloadTranscript = () =>
+    config.downloadPdf('transcript', transcript, sessionId)
   return { transcript, downloadTranscript }
 }
 

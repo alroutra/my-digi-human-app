@@ -317,6 +317,7 @@ const UneeqProvider: React.FC<UneeqProviderProps> = ({
     stopRecording,
     config: finalConfig,
     state,
+    sessionId: uneeq.current?.sessionId,
     allDialogsClosed,
     hideModal: () => dispatch({ type: 'closeModal' }),
     testMessage: (message: string) =>

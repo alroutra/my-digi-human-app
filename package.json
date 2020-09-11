@@ -16,18 +16,17 @@
 
     "start-packages": "concurrently \"yarn:start-download-pdf\" \"yarn:start-core\" \"yarn:start-ui\"",
     "build-packages": "yarn build-download-pdf && yarn build-core && yarn build-ui",
-   
+    
     "start-example-only": "yarn workspace example-app start",
-    "start-example": "concurrently \"yarn:start-packages\" \"yarn:start-example-only\"",
+    "start-example": "concurrently \"yarn:start-download-pdf\" \"yarn:start-packages\" \"yarn:start-example-only\"",
     "build-example-only": "yarn workspace example-app build",
     "build-example": "yarn build-packages && yarn build-example-only",
-
+    
     "start": "yarn start-example",
     "build": "yarn build-example",
-
+    
     "test": "yarn workspaces run test",
     "coverage": "yarn workspaces run coverage",
-
     "postinstall": "yarn build-packages"
   },
   "license": "ISC",

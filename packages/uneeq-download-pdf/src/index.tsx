@@ -40,6 +40,14 @@ const styles = StyleSheet.create({
     top: 40,
     right: 40
   },
+  sessionId: {
+    width: '100%',
+    marginTop: 40,
+    position: 'absolute',
+    bottom: 40,
+    left: 40,
+    fontSize: 11
+  },
   date: {
     fontSize: 14,
     color: '#666'
@@ -152,18 +160,21 @@ const renderItemForPDF = (item: InformationItem): any => {
   return output
 }
 
-export const PdfTemplate = ({ children, logo1, logo2 }) => (
+export const PdfTemplate = ({ children, logo1, logo2, sessionId = '' }) => (
   <Document>
     <Page size="A4" style={styles.page}>
       {logo1 && <Image src={logo1} style={styles.logo1} alt="Logo" />}
       {logo2 && <Image src={logo2} style={styles.logo2} alt="Logo" />}
       {children}
+      {!!sessionId && (
+        <Text style={styles.sessionId}>SessionID: {sessionId}</Text>
+      )}
     </Page>
   </Document>
 )
 
-export const PdfSavedItems = ({ items, logo1, logo2 }) => (
-  <PdfTemplate logo1={logo1} logo2={logo2}>
+export const PdfSavedItems = ({ items, logo1, logo2, sessionId = '' }) => (
+  <PdfTemplate logo1={logo1} logo2={logo2} sessionId={sessionId}>
     {(items as InformationItemWithoutList[][]).map((item, index: number) => (
       <View style={styles.containerSavedItems} key={index}>
         {(item as InformationItemWithoutList[]).map((childItem, indexChild) => (
@@ -174,8 +185,14 @@ export const PdfSavedItems = ({ items, logo1, logo2 }) => (
   </PdfTemplate>
 )
 
-export const PdfTranscript = ({ avatarName, items, logo1, logo2 }) => (
-  <PdfTemplate logo1={logo1} logo2={logo2}>
+export const PdfTranscript = ({
+  avatarName,
+  items,
+  logo1,
+  logo2,
+  sessionId = ''
+}) => (
+  <PdfTemplate logo1={logo1} logo2={logo2} sessionId={sessionId}>
     {(items as TranscriptItem[]).map(message => (
       <View style={styles.message} key={message.time}>
         {message.link ? (
@@ -204,7 +221,8 @@ export const downloadTranscriptPdf = async ({
   filename = '',
   content,
   logo1,
-  logo2
+  logo2,
+  sessionId = ''
 }: any) => {
   const blob = await pdf(
     <PdfTranscript
@@ -212,18 +230,28 @@ export const downloadTranscriptPdf = async ({
       items={content}
       logo1={logo1}
       logo2={logo2}
+      sessionId={sessionId}
     />
   ).toBlob()
   const url = URL.createObjectURL(blob)
   if (isMobileSafari) {
     window.open(url, '_blank')
   } else {
-    var a = document.createElement('a')
-    a.href = url
-    a.target = '_self'
-    a.download = `${filename}_${format(new Date(), 'yyyy-MM-dd_HH-mm-ss')}.pdf`
-    a.click()
-    URL.revokeObjectURL(url)
+    var xhr = new XMLHttpRequest()
+    xhr.open('GET', url, true)
+    xhr.responseType = 'blob'
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState === 4 && xhr.status == 200) {
+        var blob = new Blob([xhr.response], { type: 'application/pdf' })
+        const url = window.URL.createObjectURL(blob)
+        window.open(url, '_blank')
+        setTimeout(function() {
+          // For Firefox it is necessary to delay revoking the ObjectURL
+          URL.revokeObjectURL(url)
+        }, 500)
+      }
+    }
+    xhr.send()
   }
 }
 
@@ -231,21 +259,36 @@ export const downloadSavedItemsPdf = async ({
   filename = '',
   content,
   logo1,
-  logo2
+  logo2,
+  sessionId = ''
 }) => {
   const blob = await pdf(
-    <PdfSavedItems items={content} logo1={logo1} logo2={logo2} />
+    <PdfSavedItems
+      items={content}
+      logo1={logo1}
+      logo2={logo2}
+      sessionId={sessionId}
+    />
   ).toBlob()
 
   const url = URL.createObjectURL(blob)
   if (isMobileSafari) {
     window.open(url, '_blank')
   } else {
-    var a = document.createElement('a')
-    a.href = url
-    a.target = '_self'
-    a.download = `${filename}_${format(new Date(), 'yyyy-MM-dd_HH-mm-ss')}.pdf`
-    a.click()
-    URL.revokeObjectURL(url)
+    var xhr = new XMLHttpRequest()
+    xhr.open('GET', url, true)
+    xhr.responseType = 'blob'
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState === 4 && xhr.status == 200) {
+        var blob = new Blob([xhr.response], { type: 'application/pdf' })
+        const url = window.URL.createObjectURL(blob)
+        window.open(url, '_blank')
+        setTimeout(function() {
+          // For Firefox it is necessary to delay revoking the ObjectURL
+          URL.revokeObjectURL(url)
+        }, 500)
+      }
+    }
+    xhr.send()
   }
 }

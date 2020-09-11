@@ -3,13 +3,13 @@ import styles from './styles'
 import { Text, Button } from 'rebass'
 import { ReactComponent as MicIcon } from '../../assets/img/mic-icon.svg'
 import { useVolume } from 'uneeq-react-core'
+import { useTheme } from 'emotion-theming'
 
 import { keyframes } from '@emotion/core'
 import { useIsSmallScreen } from 'uneeq-react-core'
 import { useTranslation } from 'react-i18next'
 
 const fourTwo = (a: any, b: any) => [a, a, a, a, b, b]
-const pulseElipsisColour = 'rgba(252, 189, 28, 0.2)'
 
 const bganimationOneSide = keyframes`
     0% {
@@ -19,21 +19,21 @@ const bganimationOneSide = keyframes`
         background-size: 30% 100%;
     }
 `
-const pulse = keyframes`
+const pulse = (pttMobileGlow: string) => keyframes`
   0% {
-    box-shadow: 0px 0px 0px 1px  ${pulseElipsisColour};
+    box-shadow: 0px 0px 0px 1px  ${pttMobileGlow};
   }
   25% {
-    box-shadow: 0px 0px 0px 6px  ${pulseElipsisColour};
+    box-shadow: 0px 0px 0px 6px  ${pttMobileGlow};
   }
   50% {
-    box-shadow: 0px 0px 0px 11px  ${pulseElipsisColour};
+    box-shadow: 0px 0px 0px 11px  ${pttMobileGlow};
   }
   75% {
-    box-shadow: 0px 0px 0px 6px  ${pulseElipsisColour};
+    box-shadow: 0px 0px 0px 6px  ${pttMobileGlow};
   }  
   100% {
-    box-shadow: 0px 0px 0px 1px ${pulseElipsisColour};
+    box-shadow: 0px 0px 0px 1px ${pttMobileGlow};
   }
 `
 
@@ -43,45 +43,47 @@ export interface SendingRecording {
 }
 const PushToTalk: React.FC<SendingRecording> = ({ recording, sending }) => {
   const isSmallScreen = useIsSmallScreen()
+  const theme = useTheme() as any
+  const { pttMobileGlow } = theme.colors
   const { t } = useTranslation()
 
   const volume = useVolume(recording)
   const backgroundSize = recording ? `${volume * 2}% 100%` : undefined
-  const largeScreenBgCol = recording
-    ? 'white'
+  const pttCol = recording
+    ? theme.colors.pttColRecording
     : sending
-    ? 'rgba(252,189,28,1)'
-    : 'primaryLight'
-  const largeScreenBgImg = recording
-    ? 'radial-gradient(circle, rgba(252, 189, 28, 1) 0%, white 100%)'
+    ? theme.colors.pttColSending
+    : theme.colors.pttColWaiting
+  const pttImg = recording
+    ? theme.colors.pttImgRecording
     : sending
-    ? 'radial-gradient(circle, white 0%,rgba(252,189,28,1) 100%)'
-    : 'primary'
+    ? theme.colors.pttImgSending
+    : theme.colors.pttImgWaiting
   return (
     <Button
       variant="primary"
       sx={{
         ...styles.pushToTalkButton,
-        backgroundColor: fourTwo('primary', largeScreenBgCol),
+        backgroundColor: fourTwo('primary', pttCol),
         '&:hover': {
-          backgroundColor: fourTwo('primaryLight', largeScreenBgCol)
+          backgroundColor: fourTwo('primaryLight', pttCol)
         },
-        backgroundImage: fourTwo('initial', largeScreenBgImg),
+        backgroundImage: fourTwo('initial', pttImg),
         backgroundRepeat: 'no-repeat',
         backgroundPosition: sending ? '150% 100%' : '50% 100%',
         backgroundSize: fourTwo('initial', backgroundSize),
         animation: recording
-          ? fourTwo(`${pulse} 1.2s infinite`, `none`)
+          ? fourTwo(`${pulse(pttMobileGlow)} 1.2s infinite`, `none`)
           : sending
           ? `${bganimationOneSide} 2s ease-in-out forwards infinite`
           : 'none',
         transition: recording ? '0.2s' : 'all 1s',
         boxShadow: recording
-          ? fourTwo(`0px 0px 0px 11px ${pulseElipsisColour}`, 'none')
+          ? fourTwo(`0px 0px 0px 11px ${pttMobileGlow}`, 'none')
           : 'none',
         '&:focus': {
           boxShadow: recording
-            ? fourTwo(`0px 0px 0px 11px ${pulseElipsisColour}`, 'none')
+            ? fourTwo(`0px 0px 0px 11px ${pttMobileGlow}`, 'none')
             : 'none'
         },
         width: [47, 47, 70, 70, 310, 310],

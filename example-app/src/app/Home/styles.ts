@@ -1,6 +1,5 @@
 export const styles = {
   mainContainer: {
-    label: 'homeMainContainer',
     '&::-webkit-scrollbar, & *::-webkit-scrollbar': {
       display: 'none'
     },
@@ -10,10 +9,11 @@ export const styles = {
     },
     msOverflowStyle: 'none',
     scrollbarWidth: 'none',
+    label: 'homeMainContainer',
     minWidth: '100%',
     height: '100%',
     position: 'absolute',
-    alignItems: 'center',
+    alignItems: 'flex-start',
     flexDirection: ['column', 'column', 'column', 'column', 'row', 'row'],
     justifyContent: [
       'flex-start',
@@ -27,20 +27,18 @@ export const styles = {
     '& > video': {
       objectFit: 'cover',
       width: '100vw',
-      height: '100%',
-      maxHeight: ['70vh', '70vh', '100vh', '100vh', '100vh'],
-      position: [
-        'absolute',
-        'absolute',
-        'absolute',
-        'absolute',
-        'fixed',
-        'fixed'
+      height: [
+        'calc(100vh - 48px)',
+        'calc(100vh - 48px)',
+        '100vh',
+        '100vh',
+        '100vh'
       ],
-      mt: [14, 14, 14, 14, 0, 0],
+      minHeight: ['auto', 'auto', '100vh', '100vh', '100vh'],
+      position: ['static', 'static', 'static', 'static', 'fixed', 'fixed'],
       top: 0,
       left: 0,
-      zIndex: 4
+      zIndex: 0
     },
     maxHeight: '100%'
   },
@@ -51,31 +49,36 @@ export const styles = {
   },
   textContainer: {
     label: 'text-container',
-    ml: ['auto', 'auto', 'auto', 'auto', '15%', '15%'],
-    mr: 'auto',
     mb: [4, 0],
-    px: [10, 10, 10, 10, 0, 0],
-    mt: ['70vh', '70vh', '84vh', '84vh', 0, 0],
-    maxWidth: ['100%', '100%', '100%', '100%', 352, 352],
-    // minHeight: '100vh',
+    pl: ['10%', '10%', '10%', '10%', '15%', '15%'],
+    pr: ['10%', '10%', '10%', '10%', '40%', '35%'],
+    mt: 0,
+    height: ['1px', '1px', '1px', '1px', 'auto', 'auto'],
+    maxWidth: ['100%', '100%', '100%', '100%', '100%', '90%'],
     color: 'textAlternate',
     textAlign: 'left',
     zIndex: 4,
     width: '100%',
     maxHeight: '100%',
-    overflowY: 'scroll'
+    overflowY: ['visible', 'visible', 'visible', 'visible', 'scroll', 'scroll']
   },
   mobileImSophie: {
     display: ['flex', 'flex', 'flex', 'flex', 'none', 'none'],
     fontSize: [2, 2, 6, 6, 78, 78],
-    lineHeight: '50px',
+    lineHeight: '26px',
+    minHeight: 56,
+    textAlign: 'center',
     color: 'white',
     fontWeight: 'bold',
+    alignItems: 'center',
+    justifyContent: 'center',
     alignSelf: 'center'
   },
   imSophieText: {
     display: ['none', 'none', 'none', 'none', 'flex', 'flex'],
-    fontSize: 38,
+    fontSize: 78,
+    lineHeight: '80px',
+    mt: 15,
     fontWeight: 'bold'
   },
   subtitle: {
@@ -84,12 +87,12 @@ export const styles = {
     mt: 2,
     mb: [3, 4],
     lineHeight: '30px',
-    display: ['none', 'none', 'none', 'none', 'block', 'block']
+    display: ['none', 'none', 'none', 'none', 'block', 'block'],
+    maxWidth: 480
   },
   sophieBGImage: {
     label: 'sophieBGImage',
     position: 'fixed',
-    backgroundImage: `url('https://d1qt3q0di8y5ko.cloudfront.net/landing_page_idle.jpg')`,
     backgroundSize: ['100%', '100%', '70%'],
     backgroundRepeat: 'no-repeat',
     backgroundPosition: ['top', 'top', '100% bottom'],
@@ -105,18 +108,20 @@ export const styles = {
     minWidth: '10rem',
     py: [3, 2],
     px: [6, 5],
-    mt: 3
+    mt: 3,
+    mb: 10
   },
   privacyTextToggle: {
     fontWeight: '300',
     cursor: 'pointer',
     fontSize: 0,
     lineHeight: '22px',
-    textDecoration: 'none'
+    textDecoration: 'none',
+    maxWidth: 480
   },
   disclaimer: {
     mt: 9,
-    mb: 14,
+    mb: 6,
     fontWeight: '300',
     fontSize: 0,
     lineHeight: '22px',
@@ -126,13 +131,22 @@ export const styles = {
     },
     '& a:hover': {
       textDecoration: 'underline'
-    }
+    },
+    maxWidth: 480
+  },
+  recaptchaDisclaimer: {
+    fontWeight: '300',
+    fontSize: 0,
+    lineHeight: '22px',
+    mb: 14
   },
   startButton: {
+    label: 'startButton',
     display: ['block', 'block', 'block', 'block', 'none', 'none'],
-    mt: [0, 0, 0, 0, 1, 1],
-    mb: [0, 0, 0, 0, 1, 1],
-    mx: ['auto', 'auto', 'auto', 'auto', 0, 0]
+    mt: [-100, -100, -200, -200, 1, 1],
+    mb: [100, 100, 150, 150, 1, 1],
+    mx: ['auto', 'auto', 'auto', 'auto', 0, 0],
+    zIndex: 4
   },
   surveyToggle: {
     fontWeight: 'bold',
@@ -150,6 +164,7 @@ export const styles = {
   },
   surveyContainer: {
     transition: 'max-height .5s linear',
+    overflow: 'hidden',
     '& label': {
       fontWeight: '300',
       fontSize: 2,
@@ -158,9 +173,10 @@ export const styles = {
     },
     '& textarea': {
       borderRadius: 'button',
-      borderColor: 'border',
+      borderColor: 'grey',
       backgroundColor: 'white'
-    }
+    },
+    maxWidth: 440
   },
   checkbox: {
     width: '20px',
@@ -187,7 +203,8 @@ export const styles = {
     mt: 2,
     '& p': {
       mb: 3
-    }
+    },
+    maxWidth: 480
   },
   mobileParagraphsContainer: {
     zIndex: 9,

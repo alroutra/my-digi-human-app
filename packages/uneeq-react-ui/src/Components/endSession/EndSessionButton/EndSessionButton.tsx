@@ -6,7 +6,7 @@ import styles from './styles'
 import { useTranslation } from 'react-i18next'
 
 const EndSessionButton = () => {
-  const { dispatch } = useContext(UneeqContext)
+  const { dispatch, config } = useContext(UneeqContext)
   const { feedbackGiven, contactDetailsGiven } = useUneeqState()
   const { t } = useTranslation()
 
@@ -14,7 +14,7 @@ const EndSessionButton = () => {
     let nextStep
     if (!feedbackGiven) {
       nextStep = 'Feedback'
-    } else if (!contactDetailsGiven) {
+    } else if (!contactDetailsGiven && config.showEscalationForm) {
       nextStep = 'EscalationForm'
     } else {
       nextStep = 'EndConfirm'
