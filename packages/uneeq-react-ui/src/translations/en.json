@@ -83,7 +83,7 @@
   },
   "PrivacySummary": {
     "heading": "Data and Privacy",
-    "text": "We take your privacy seriously, we only use audio data so that a\n          digital human can understand what you are saying to it. We then share\n          audio data with third party service partners who helps us with\n          transcription. Neither they or we store any audio data once we have\n          completed the transcription. For more information read our",
+    "text": "We take your privacy seriously, we only use video and audio data so that a\n          digital human can understand what you are saying to it. We then share\n          audio data with third party service partners who help us with\n          transcription. Neither they or we store any audio data once we have\n          completed the transcription. For more information read our",
     "linkText": "privacy policy"
   },
   "Settings": {

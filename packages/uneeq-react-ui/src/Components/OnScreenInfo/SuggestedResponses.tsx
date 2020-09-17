@@ -53,8 +53,8 @@ const SuggestedResponses = () => {
               justifyContent: [
                 'left',
                 'left',
-                'left',
-                'left',
+                'center',
+                'center',
                 'center',
                 'center'
               ]

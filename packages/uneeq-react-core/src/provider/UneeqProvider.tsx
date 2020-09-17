@@ -251,7 +251,7 @@ const UneeqProvider: React.FC<UneeqProviderProps> = ({
   const { resetTimeout } = useTimeoutUpdate(
     state,
     dispatch,
-    endSession,
+    onTimedOut,
     finalConfig.timeoutWarning
   )
 

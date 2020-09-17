@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.1.1] - 2020-09-17
+
+### Fixed
+- Call onTimedOut at end of timeout
+- Center Suggested Responses on tablet-size layout
+- Adjust bottom limit of OnScreenInfo to avoid overlap with user question text
+
+### Changed
+- Add 'video' to example privacy policy
+
 ## [1.1.0] - 2020-09-11
 
 ### Changed
