@@ -20,7 +20,7 @@ export const styles = {
     right: [20, 20, 20, 20, 80, 80],
     maxWidth: ['90%', '90%', '90%', '90%', 560, 560],
     top: [20, 20, 20, 20, 88, 88],
-    bottom: [20, 20, 20, 20, 154, 154],
+    bottom: [20, 20, 20, 20, 195, 195],
     width: '100%',
     display: ['none', 'none', 'none', 'none', 'flex', 'flex'],
     flexDirection: 'column',
@@ -46,7 +46,7 @@ export const styles = {
       '& a:visited': {
         color: 'secondary'
       },
-      
+
       // Needed to make sure safari keeps 'information-scroll' from overflowing this
       display: 'flex',
       flexDirection: 'column'
@@ -73,14 +73,14 @@ export const styles = {
       left: 0,
       right: 0,
       position: 'absolute',
-      top:0,
+      top: 0,
       zIndex: 1,
       background:
         'linear-gradient(to bottom, rgba(255, 255, 255, 1) 50%,rgba(255, 255, 255, 0) 100%);'
     },
     bottomFade: {
       label: 'bottomFade',
-      bottom:0,
+      bottom: 0,
       height: 25,
       left: 0,
       right: 0,
@@ -264,8 +264,8 @@ export const styles = {
       justifyContent: [
         'flex-start',
         'flex-start',
-        'flex-start',
-        'flex-start',
+        'center',
+        'center',
         'center',
         'center'
       ]

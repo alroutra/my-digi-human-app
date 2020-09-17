@@ -9,11 +9,11 @@ import styles from './styles'
 const Paragraphs = () => (
   <>
     <Text as="p">
-      We take your privacy seriously, we only use audio data so that a digital
-      human can understand what you are saying to it. We then share audio data
-      with third party service partners who helps us with transcription. Neither
-      they or we store any audio data once we have completed the transcription.
-      For more information read our{' '}
+      We take your privacy seriously, we only use video and audio data so that a
+      digital human can understand what you are saying to it. We then share
+      audio data with third party service partners who help us with
+      transcription. Neither they or we store any audio data once we have
+      completed the transcription. For more information read our{' '}
       <Text
         as="a"
         href="/privacy_policy.html"
@@ -130,7 +130,6 @@ const Home: React.FC<HomeProps> = ({ startSession }) => {
           sx={{ display: ['none', 'none', 'none', 'none', 'block', 'block'] }}
         />
       </Box>
-      
     </Flex>
   )
 }
