@@ -97,7 +97,7 @@ const UneeqProvider: React.FC<UneeqProviderProps> = ({
   }
 
   // Manage permissions approval process (unless using a testState)
-  usePreApprove(testState ? () => {} : dispatch)
+  usePreApprove(testState ? () => {} : dispatch, finalConfig)
 
   useEffect(() => {
     if (finalConfig.analytics) {
@@ -152,6 +152,7 @@ const UneeqProvider: React.FC<UneeqProviderProps> = ({
         avatarVideoContainerElement: avatarVideo as HTMLDivElement,
         localVideoContainerElement: localVideo as HTMLDivElement,
         sendLocalVideo: finalConfig.sendLocalVideo,
+        sendLocalAudio: finalConfig.sendLocalAudio,
         customData: finalConfig.customData,
         preferredCameraId: localStorage.getItem('videoInput') || undefined,
         preferredMicrophoneId: localStorage.getItem('audioInput') || undefined,

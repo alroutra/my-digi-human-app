@@ -7,7 +7,7 @@ import styles from './styles'
 import { useTranslation } from 'react-i18next'
 
 const Menu: React.FC = () => {
-  const { dispatch } = useContext(UneeqContext)
+  const { dispatch, config } = useContext(UneeqContext)
   const { menuOpen } = useUneeqState()
   const menuArea = useRef()
   const { t } = useTranslation()
@@ -39,9 +39,12 @@ const Menu: React.FC = () => {
       {menuOpen && (
         <Flex sx={styles.menuAreaContainer}>
           <Flex sx={styles.menuArea} ref={menuArea}>
-            <Flex as="a" onClick={trackHandler(openSettings, 'settings-btn')}>
-              {t('Menu.settings')}
-            </Flex>
+            {config.useLocalAudio && (
+              // Settings doesn't work if uneeq-js didn't request access to devices
+              <Flex as="a" onClick={trackHandler(openSettings, 'settings-btn')}>
+                {t('Menu.settings')}
+              </Flex>
+            )}
             <Flex
               as="a"
               onClick={trackHandler(openTranscript, 'open-transcript-btn')}

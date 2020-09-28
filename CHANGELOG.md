@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.1.2] - 2020-09-23
+
+### Changed
+- Allow sendLocalAudio:false
+
 ## [1.1.1] - 2020-09-17
 
 ### Fixed
