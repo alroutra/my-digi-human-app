@@ -76,10 +76,10 @@ const BottomBar: React.FC = () => {
     avatarSpeaking,
     savedItems
   } = useUneeqState()
-  const { dispatch } = useContext(UneeqContext)
+  const { dispatch, config } = useContext(UneeqContext)
   const { t } = useTranslation()
 
-  const speechMode = inputMode === 'speech'
+  const speechMode = config.sendLocalAudio && inputMode === 'speech'
 
   const toggleInputMode = () =>
     dispatch({ type: 'setInputMode', payload: speechMode ? 'text' : 'speech' })
@@ -207,15 +207,17 @@ const BottomBar: React.FC = () => {
                     <Chat />
                   </Flex>
                 )}
-                <InputToggle
-                  speechMode={speechMode}
-                  toggleInputMode={trackHandler(
-                    toggleInputMode,
-                    speechMode
-                      ? 'enable-type-mode-btn'
-                      : 'disable-type-mode-btn'
-                  )}
-                />
+                {config.sendLocalAudio && (
+                  <InputToggle
+                    speechMode={speechMode}
+                    toggleInputMode={trackHandler(
+                      toggleInputMode,
+                      speechMode
+                        ? 'enable-type-mode-btn'
+                        : 'disable-type-mode-btn'
+                    )}
+                  />
+                )}
               </Flex>
             )}
           </Flex>

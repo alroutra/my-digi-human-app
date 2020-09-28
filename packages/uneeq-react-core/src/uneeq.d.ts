@@ -1,4 +1,4 @@
-import { EventHandler } from "./analytics"
+import { EventHandler } from './analytics'
 
 interface AnyUneeqMessage extends UneeqMessage {
   [propName: string]: any
@@ -13,6 +13,7 @@ interface Config {
   usePasscode: boolean
   playWelcome: boolean
   sendLocalVideo: boolean
+  sendLocalAudio: boolean
   customData: any
   informationInTranscript: boolean
   tapThreshold: number

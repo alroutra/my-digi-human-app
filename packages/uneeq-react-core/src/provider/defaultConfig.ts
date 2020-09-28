@@ -4,6 +4,7 @@ export const defaultConfig = {
   usePasscode: false,
   playWelcome: true,
   sendLocalVideo: false,
+  sendLocalAudio: true,
   customData: {},
 
   // When holding down spacebar, durations shorter that this will trigger
