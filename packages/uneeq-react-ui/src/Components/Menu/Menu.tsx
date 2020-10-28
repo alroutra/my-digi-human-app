@@ -39,7 +39,7 @@ const Menu: React.FC = () => {
       {menuOpen && (
         <Flex sx={styles.menuAreaContainer}>
           <Flex sx={styles.menuArea} ref={menuArea}>
-            {config.useLocalAudio && (
+            {config.sendLocalAudio && (
               // Settings doesn't work if uneeq-js didn't request access to devices
               <Flex as="a" onClick={trackHandler(openSettings, 'settings-btn')}>
                 {t('Menu.settings')}
