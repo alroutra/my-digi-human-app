@@ -1,6 +1,8 @@
-import React, { createElement } from 'react'
+import React, { createElement, useRef, useContext } from 'react'
 // import ReactHtmlParser from 'react-html-parser'
 import { Image, Link, Text, Heading } from 'rebass'
+import { UneeqContext, useUneeqState } from 'uneeq-react-core'
+import { debounce } from 'lodash'
 // @ts-ignore
 import marksy from 'marksy'
 
@@ -11,18 +13,56 @@ const headingStyles = {
   p: 0
 }
 
-const compile = marksy({
-  elements: {
-    a: (props: any) => (
-      <a {...props} target="_blank" rel="noopener noreferrer" />
-    ),
-    h1: ({ children }: any) => <Heading sx={headingStyles}>{children}</Heading>,
-    h2: ({ children }: any) => <Heading sx={headingStyles}>{children}</Heading>,
-    h3: ({ children }: any) => <Heading sx={headingStyles}>{children}</Heading>,
-    h4: ({ children }: any) => <Heading sx={headingStyles}>{children}</Heading>
-  },
-  createElement
-})
+export const getUtteranceFromURI = (uri: string) => {
+  const match = uri.match(/^say\:(.*)$/)
+  console.log(match)
+  if (!match) {
+    return undefined
+  }
+  return match[1]
+}
+
+const compile = (
+  markdown: string,
+  send: (text: string) => void,
+  sendCallback: (text: string) => void
+) => {
+  const parser = marksy({
+    elements: {
+      a: (props: any) => {
+        const utterance = getUtteranceFromURI(props.href)
+        return utterance ? (
+          <a
+            {...props}
+            rel="noopener noreferrer"
+            onClick={(event: Event) => {
+              event.preventDefault()
+              send(utterance)
+              sendCallback(utterance)
+            }}
+          />
+        ) : (
+          <a {...props} rel="noopener noreferrer" />
+        )
+      },
+      h1: ({ children }: any) => (
+        <Heading sx={headingStyles}>{children}</Heading>
+      ),
+      h2: ({ children }: any) => (
+        <Heading sx={headingStyles}>{children}</Heading>
+      ),
+      h3: ({ children }: any) => (
+        <Heading sx={headingStyles}>{children}</Heading>
+      ),
+      h4: ({ children }: any) => (
+        <Heading sx={headingStyles}>{children}</Heading>
+      )
+    },
+    createElement
+  })
+
+  return parser(markdown, {})
+}
 
 interface HeadingInformation {
   type: 'heading'
@@ -75,10 +115,15 @@ type InformationItem =
   | MarkdownInformation
 
 const renderInformationItem = (item: InformationItem, index: number): any => {
+  const { sendText, dispatch } = useContext(UneeqContext)
+
+  const debouncedSend = useRef(debounce((text: string) => sendText(text), 2000))
+    .current
+
   switch (item.type) {
     case 'html':
       console.warn('HTML type used')
-      return null//ReactHtmlParser(item.html)
+      return null //ReactHtmlParser(item.html)
     case 'text':
       return <Text key={index}>{item.text}</Text>
     case 'heading':
@@ -88,7 +133,9 @@ const renderInformationItem = (item: InformationItem, index: number): any => {
         </Text>
       )
     case 'markdown':
-      const compiled = compile(item.markdown, {})
+      const compiled = compile(item.markdown, debouncedSend, (text: string) => {
+        dispatch({ type: 'suggestedResponseSent', payload: text })
+      })
       return compiled.tree
     case 'list':
       return (

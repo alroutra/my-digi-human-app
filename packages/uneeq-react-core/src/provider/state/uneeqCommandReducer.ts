@@ -1,5 +1,10 @@
 import { closeDialogs, closeModals } from './initialState'
-import { UneeqInformation, UneeqSuggestedResponses, UneeqState, Config } from '../../uneeq'
+import {
+  UneeqInformation,
+  UneeqSuggestedResponses,
+  UneeqState,
+  Config
+} from '../../uneeq'
 
 export type UneeqCommand = {
   openInputBar?: boolean
@@ -44,7 +49,7 @@ export const uneeqCommandReducer = (
       escalationFormFromServer: true
     }
   }
-  if (command.suggestedResponses) {
+  if (command.suggestedResponses && command.suggestedResponses.length > 0) {
     // Handle old style suggestedResponses
     const suggestedResponses = command.suggestedResponses
     if (!suggestedResponses[0].utterance) {

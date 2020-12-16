@@ -24,7 +24,7 @@ interface HTMLInformation {
   type: 'html'
   html: string
 }
-interface MarkdownInformation {
+export interface MarkdownInformation {
   type: 'markdown'
   markdown: string
 }
