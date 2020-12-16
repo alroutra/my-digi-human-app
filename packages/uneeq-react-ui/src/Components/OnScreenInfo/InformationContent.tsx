@@ -86,6 +86,12 @@ interface ImageInformation {
   label: string
   width: string
 }
+interface VideoInformation {
+  type: 'video'
+  source: string
+  width: string
+  height: string
+}
 export interface LinkInformation {
   type: 'link'
   href: string
@@ -97,6 +103,7 @@ export type InformationItemWithoutList =
   | TextInformation
   | HTMLInformation
   | ImageInformation
+  | VideoInformation
   | LinkInformation
   | MarkdownInformation
 
@@ -111,6 +118,7 @@ type InformationItem =
   | TextInformation
   | HTMLInformation
   | ImageInformation
+  | VideoInformation
   | LinkInformation
   | MarkdownInformation
 
@@ -153,6 +161,18 @@ const renderInformationItem = (item: InformationItem, index: number): any => {
       )
     case 'image':
       return <Image src={item.source} alt={item.label} key={index} />
+    case 'video':
+      return (
+        <iframe
+          src={item.source}
+          width={item.width || '100%'}
+          height={item.height || '375'}
+          key={index}
+          frameBorder={0}
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        ></iframe>
+      )
   }
 }
 
