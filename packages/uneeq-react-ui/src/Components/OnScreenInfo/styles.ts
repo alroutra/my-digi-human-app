@@ -196,7 +196,7 @@ export const styles = {
       },
       msOverflowStyle: 'none',
       scrollbarWidth: 'none',
-      maxHeight: 350
+      maxHeight: [350, 350, 350, 350, 550, 550]
     },
     saveButton: {
       width: 82,

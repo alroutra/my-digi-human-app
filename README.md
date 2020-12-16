@@ -178,6 +178,39 @@ The content of suggested responses will only be triggered from the NLP platform.
 
 The information content can only be triggered from the NLP platform. This is used to provide users with useful snippets of information.
 
+#### Video
+
+**Command**: `{ "information": [{ "type": "video", "source": "https://www.youtube.com/embed/rF2u7RTPsHI"}] }`
+
+Full example (including heading):
+
+```json
+{
+  "instructions": {
+    "displayHtml": {
+      "html": "\"information\": [{\"type\": \"heading\", \"text\": \"Video heading here\"},{ \"type\": \"video\", \"source\": \"https://www.youtube.com/embed/rF2u7RTPsHI\", \"width\": \"100%\", \"height\": \"375\"}]}"
+    }
+  }
+}
+```
+
+##### Information "video" Type Properties
+
+These properties can be changed to adjust the sizing and appearance of the video.
+Additionally the source value can be changed to suit any embed URL of services
+where the original embed code is an iframe (e.g. Vimeo)
+
+The video information type has not been tested with videos hosted on Amazon S3 or similar services.
+
+| property | value                                     | type            | required |
+| -------- | ----------------------------------------- | --------------- | -------- |
+| type     | video                                     | string          | yes      |
+| source   | https://www.youtube.com/embed/xxxxxxx     | string          | yes      |
+| width    | 100% (default) or numeric value           | string / number | no       |
+| height   | 375 (default) or numeric/percentage value | string / number | no       |
+
+#### Markdown
+
 **Command**: `{ "information": "#Heading\nInformaion\n[link](http://example.com)" }`
 
 See [On-screen information markdown](#On-screen-information-markdown) below for more

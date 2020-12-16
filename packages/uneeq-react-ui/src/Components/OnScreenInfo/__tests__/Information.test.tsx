@@ -37,6 +37,12 @@ const information = [
     source: 'https://picsum.photos/100',
     label: 'Yep, its an image',
     width: '100%'
+  },
+  {
+    type: 'video',
+    source: 'https://www.youtube.com/embed/rF2u7RTPsHI',
+    width: '100%',
+    height: '375'
   }
 ] as InformationItem[]
 ;(useUneeqState as jest.Mock).mockReturnValue({

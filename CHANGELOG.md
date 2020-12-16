@@ -1,5 +1,23 @@
 # Changelog
 
+## [1.3.0] - 2020-12-17
+
+### Changed
+
+- Added video type to `InformationContent` component.
+
+E.g:
+
+```json
+{
+  "instructions": {
+    "displayHtml": {
+      "html": "\"information\": [{\"type\": \"heading\", \"text\": \"Video heading here\"},{ \"type\": \"video\", \"source\": \"https://www.youtube.com/embed/rF2u7RTPsHI\"}]}"
+    }
+  }
+}
+```
+
 ## [1.2.0] - 2020-12-08
 
 ### Changed
@@ -8,7 +26,7 @@
 
 E.g.
 
-```
+```json
 [Accept the deal](say:Yes I would like the deal)
 ```
 

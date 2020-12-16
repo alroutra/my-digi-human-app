@@ -34,6 +34,12 @@ interface ImageInformation {
   label: string
   width: string
 }
+interface VideoInformation {
+  type: 'video'
+  source: string
+  width: string
+  height: string
+}
 export interface LinkInformation {
   type: 'link'
   href: string
@@ -45,6 +51,7 @@ export type InformationItemWithoutList =
   | TextInformation
   | HTMLInformation
   | ImageInformation
+  | VideoInformation
   | LinkInformation
   | MarkdownInformation
 
@@ -59,6 +66,7 @@ export type InformationItem =
   | TextInformation
   | HTMLInformation
   | ImageInformation
+  | VideoInformation
   | LinkInformation
   | MarkdownInformation
 

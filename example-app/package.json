@@ -10,7 +10,7 @@
     "react-dom": "^16.12.0",
     "react-scripts": "3.4.0",
     "rebass": "^4.0.7",
-    "uneeq-react-ui": "1.2.0"
+    "uneeq-react-ui": "1.3.0"
   },
   "scripts": {
     "start": "react-scripts start",
