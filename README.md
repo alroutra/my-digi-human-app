@@ -188,7 +188,7 @@ Full example (including heading):
 {
   "instructions": {
     "displayHtml": {
-      "html": "\"information\": [{\"type\": \"heading\", \"text\": \"Video heading here\"},{ \"type\": \"video\", \"source\": \"https://www.youtube.com/embed/rF2u7RTPsHI\", \"width\": \"100%\", \"height\": \"375\"}]}"
+      "html": "{\"information\": [{\"type\": \"heading\", \"text\": \"Video heading here\"},{ \"type\": \"video\", \"source\": \"https://www.youtube.com/embed/rF2u7RTPsHI\", \"width\": \"100%\", \"height\": \"375\"}]}"
     }
   }
 }
