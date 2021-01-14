@@ -12,7 +12,7 @@ E.g:
 {
   "instructions": {
     "displayHtml": {
-      "html": "\"information\": [{\"type\": \"heading\", \"text\": \"Video heading here\"},{ \"type\": \"video\", \"source\": \"https://www.youtube.com/embed/rF2u7RTPsHI\"}]}"
+      "html": "{\"information\": [{\"type\": \"heading\", \"text\": \"Video heading here\"},{ \"type\": \"video\", \"source\": \"https://www.youtube.com/embed/rF2u7RTPsHI\"}]}"
     }
   }
 }
