@@ -123,11 +123,6 @@ type InformationItem =
   | MarkdownInformation
 
 const renderInformationItem = (item: InformationItem, index: number): any => {
-  const { sendText, dispatch } = useContext(UneeqContext)
-
-  const debouncedSend = useRef(debounce((text: string) => sendText(text), 2000))
-    .current
-
   switch (item.type) {
     case 'html':
       console.warn('HTML type used')
@@ -141,6 +136,10 @@ const renderInformationItem = (item: InformationItem, index: number): any => {
         </Text>
       )
     case 'markdown':
+      const { sendText, dispatch } = useContext(UneeqContext)
+      const debouncedSend = useRef(
+        debounce((text: string) => sendText(text), 2000)
+      ).current
       const compiled = compile(item.markdown, debouncedSend, (text: string) => {
         dispatch({ type: 'suggestedResponseSent', payload: text })
       })
