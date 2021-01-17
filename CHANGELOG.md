@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.3.1] - 2021-01-18
+
+### Fixed
+
+- Fixed issue where debounced sendText() / UneeQ SDK sendTranscript() causes circular reference during render if clickable utterances are used alongside video content in the same OnScreenInfo component instance.
+
 ## [1.3.0] - 2020-12-17
 
 ### Changed
